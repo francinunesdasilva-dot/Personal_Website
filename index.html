@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* stars: subtle */
     #stars{
       position: fixed;
       inset: 0;
@@ -66,9 +65,7 @@
       color: transparent;
     }
 
-    .block{
-      margin-top: 44px;
-    }
+    .block{ margin-top: 44px; }
 
     .kicker{
       color: rgba(255,255,255,.72);
@@ -105,9 +102,8 @@
     }
     @media (max-width: 860px){ .hero-grid{ grid-template-columns: 1fr; } }
 
-    /* MORE SPACE below the name */
     .intro{
-      margin-top: 26px; /* increased */
+      margin-top: 26px;
       color: var(--muted);
       font-size: 16px;
       line-height: 1.75;
@@ -175,20 +171,52 @@
       box-shadow: 0 10px 26px rgba(0,0,0,.16);
     }
     .card h3{
-      margin: 0 0 6px;
-      font-size: 16px;
+      margin: 0 0 8px;
+      font-size: 18px;
       letter-spacing: -0.01em;
       color: rgba(255,255,255,.90);
     }
     .card p{
       margin: 0;
       color: var(--muted);
-      line-height: 1.65;
-      font-size: 15.5px;
+      line-height: 1.7;
+      font-size: 15.75px;
+    }
+    .card .btn-row{
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.84);
+      font-size: 13.5px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.045);
+      color: white;
+    }
+
+    .writing-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .writing-grid{ grid-template-columns: 1fr; }
     }
 
     .writing{
-      margin-top: 14px;
       border-radius: var(--radius2);
       padding: 18px 18px 16px;
       background: rgba(255,255,255,.022);
@@ -250,7 +278,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .reveal, .reveal.in{
+      .reveal, .reveal.in, .btn, .social a{
         transition: none !important;
       }
     }
@@ -315,7 +343,9 @@
       <p class="kicker">Paintings</p>
       <h2><span class="grad">Where words stop</span></h2>
       <p class="lead">
-        Painting slows me down. It is how I practice attention.
+        I started painting at a young age, paused for a very long time, and just recently resumed making a few pieces again.
+        Painting is how I translate feelings, thoughts, and fleeting moments into color and form. Each piece is a story,
+        a fragment of my inner world expressed on canvas.
       </p>
 
       <div class="paint-grid">
@@ -332,10 +362,14 @@
     <div class="block reveal" id="reflections">
       <p class="kicker">Reflections</p>
       <h2><span class="grad">Notes to myself</span></h2>
+      <p class="lead">
+        I like to do creative writing. Nothing structured, no agenda, just free flow of thoughts.
+      </p>
 
-      <div class="writing">
-        <h3>While Everything Moves</h3>
-        <pre>Everything passes.
+      <div class="writing-grid">
+        <div class="writing">
+          <h3>While Everything Moves</h3>
+          <pre>Everything passes.
 Look up at the sky and notice how the clouds keep moving…
 After just a few seconds of watching them, they are no longer in the same place.
 
@@ -353,11 +387,11 @@ What shapes our experience along the way are the choices we make.
 
 The secret of life, then, lies in choosing what is right—
 what makes sense—while we are in motion.</pre>
-      </div>
+        </div>
 
-      <div class="writing">
-        <h3>Tomorrow</h3>
-        <pre>I am running because I have a place to be 
+        <div class="writing">
+          <h3>Tomorrow</h3>
+          <pre>I am running because I have a place to be 
 A place that is magical and sweet
 Where pain shall not exist
 But colorful balloons, dance, and light
@@ -376,6 +410,7 @@ The place I long for is called tomorrow.
 I will keep on chasing tomorrow
 Even though I don't know
 if it will exist</pre>
+        </div>
       </div>
     </div>
 
@@ -384,8 +419,11 @@ if it will exist</pre>
       <p class="kicker">Meditation</p>
       <h2><span class="grad">Stillness</span></h2>
       <p class="lead">
-        Meditation is training. It makes my attention steadier and my life less reactive. I did an 8-day silent retreat,
-        and it reset something simple: I can be with what is here.
+        Meditation is training and a harder one. In today&#39;s world it is very challenging to sit quietly for a longer period of time
+        and take the time to examine what is going on inside. In 2025, I completed an intensive 8-day silent retreat at a remote
+        monastery. Stripping away the noise of digital life and conversation revealed a profound layer of clarity and resilience.
+        It was a transformative period of sitting with one&#39;s thoughts, observing the nature of the mind without judgment, and
+        finding a deep, quiet strength that I carry back into my day to day.
       </p>
 
       <div class="media-frame">
@@ -396,13 +434,16 @@ if it will exist</pre>
     <!-- MEDIA -->
     <div class="block reveal" id="media">
       <p class="kicker">Readings & movies</p>
-      <h2><span class="grad">What I’m into</span></h2>
+      <h2><span class="grad">What I am into</span></h2>
 
       <div class="grid-2">
         <div class="card">
-          <h3>Reading list</h3>
-          <p>My Goodreads: what I am reading and what I have rated.</p>
-          <div style="margin-top:12px;">
+          <h3>Readings</h3>
+          <p>
+            I am very selective when it comes to books. Although I have not read a lot of books, the ones I have read are a very good selection.
+            I like to read about psychology, philosophy, science, and biographies. Sometimes a good novel makes its way to my list too.
+          </p>
+          <div class="btn-row">
             <a class="btn" href="https://www.goodreads.com/user/show/177005295-franciele-nunes-da-silva" target="_blank" rel="noreferrer noopener">
               Goodreads →
             </a>
@@ -411,8 +452,11 @@ if it will exist</pre>
 
         <div class="card">
           <h3>Movies</h3>
-          <p>My Filmaffinity ratings: the ones that stayed with me.</p>
-          <div style="margin-top:12px;">
+          <p>
+            I started tracking the movies I watch in 2024, even though I have watched far more than what appears on my list.
+            I love going to the movie theater and watching movies hot the press. All genres are welcome except for the really terrifying horror ones.
+          </p>
+          <div class="btn-row">
             <a class="btn" href="https://www.filmaffinity.com/us/userratings.php?user_id=7077969" target="_blank" rel="noreferrer noopener">
               Filmaffinity →
             </a>
