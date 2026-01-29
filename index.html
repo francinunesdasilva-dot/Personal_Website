@@ -146,13 +146,19 @@
       max-width: 78ch;
     }
 
+    /* Paintings: 3 columns on desktop, 2 on tablet, 1 on mobile */
     .paint-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       margin-top: 14px;
     }
-    @media (max-width: 860px){ .paint-grid{ grid-template-columns: 1fr; } }
+    @media (max-width: 980px){
+      .paint-grid{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px){
+      .paint-grid{ grid-template-columns: 1fr; }
+    }
     .paint-grid .media-frame{ margin-top: 0; }
     .paint-grid .media-frame img{ max-height: 520px; }
 
@@ -328,9 +334,9 @@
       <h2><span class="grad">The outer world</span></h2>
       <p class="lead">
         I travel for perspective and to come back with a calmer mind. Every journey brings new perspectives, unforgettable
-        encounters, and moments that fuel my creativity and reflections. Travel allows me to connect with the world and
-        with myself, capturing experiences that are a boost of creativity for both my professional and personal life.
-        I have visited only 12 countries but I have spent a lot of time in the US national parks having visited 34 of them.
+        encounters, and moments that fuel creativity and reflection. Travel helps me connect with the world and with myself,
+        and the experiences I collect become energy for both my professional and personal life. I have visited only 12 countries,
+        but I have spent a lot of time in the US national parks and I have visited 34 of them.
       </p>
 
       <div class="media-frame">
@@ -354,6 +360,9 @@
         </div>
         <div class="media-frame">
           <img src="painting-2.png" alt="Painting 2"/>
+        </div>
+        <div class="media-frame">
+          <img src="crossmint.png" alt="Painting 3"/>
         </div>
       </div>
     </div>
