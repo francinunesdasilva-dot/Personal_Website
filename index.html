@@ -15,8 +15,8 @@
       --muted: rgba(255,255,255,.62);
       --line: rgba(255,255,255,.10);
 
-      --g1: #35d0ff; /* blue */
-      --g2: #22e1a8; /* green */
+      --g1: #35d0ff;
+      --g2: #22e1a8;
       --shadow: 0 16px 50px rgba(0,0,0,.42);
 
       --radius: 22px;
@@ -36,12 +36,11 @@
       overflow-x: hidden;
     }
 
-    /* background stars */
     #stars{
       position: fixed;
       inset: 0;
       z-index: -2;
-      opacity: .58; /* calmer */
+      opacity: .58;
       pointer-events: none;
     }
     .vignette{
@@ -178,15 +177,36 @@
       }
     }
 
+    /* NEW: no-crop image frame */
+    .media-frame{
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+    }
+    .media-frame img{
+      width: 100%;
+      height: auto;              /* key: responsive height */
+      display: block;
+      object-fit: contain;       /* key: never crop */
+      background: rgba(0,0,0,.12); /* looks good if image has transparency or odd aspect */
+    }
+    .img-caption{
+      padding: 12px 12px 12px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.72);
+      font-size: 13.25px;
+      line-height: 1.45;
+      background: rgba(0,0,0,.16);
+      backdrop-filter: blur(8px);
+    }
+
     .avatar-card{
       width: min(320px, 100%);
-      aspect-ratio: 1 / 1;
       border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.12);
       overflow: hidden;
       position: relative;
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 14px 45px rgba(0,0,0,.30);
       transform: translateZ(0);
     }
     .avatar-card::after{
@@ -201,24 +221,16 @@
       mix-blend-mode: screen;
       filter: blur(12px);
     }
-    .avatar-card img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      position: relative;
-      z-index: 1;
-      transform: scale(1.01);
-      transition: transform .35s ease;
+    .avatar-card .media-frame{
+      border-radius: 22px;
     }
-    .avatar-card:hover img{ transform: scale(1.03); }
 
     section{
       margin-top: 16px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.028));
-      box-shadow: 0 10px 34px rgba(0,0,0,.28); /* lighter */
+      box-shadow: 0 10px 34px rgba(0,0,0,.28);
       overflow: hidden;
     }
     .section-inner{ padding: 20px 22px; }
@@ -277,6 +289,7 @@
       font-size: 14.5px;
     }
 
+    /* paintings: now no-crop too */
     .img-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -284,51 +297,9 @@
       margin-top: 14px;
     }
     @media (max-width: 860px){ .img-grid{ grid-template-columns: 1fr; } }
-
-    .img-tile{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
+    .img-grid .media-frame{
       border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,.22);
-      transform: translateZ(0);
     }
-    .img-tile img{
-      width:100%;
-      height: 235px;
-      object-fit: cover;
-      display:block;
-      transition: transform .35s ease, filter .35s ease;
-      filter: saturate(1.01);
-    }
-    .img-tile:hover img{ transform: scale(1.035); filter: saturate(1.04); }
-
-    .img-caption{
-      padding: 12px 12px 12px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      color: rgba(255,255,255,.72);
-      font-size: 13.25px;
-      line-height: 1.45;
-      background: rgba(0,0,0,.16);
-      backdrop-filter: blur(8px);
-    }
-
-    .wide-media{
-      margin-top: 14px;
-      border-radius: 18px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 10px 30px rgba(0,0,0,.22);
-    }
-    .wide-media img{
-      width: 100%;
-      height: 310px;
-      object-fit: cover;
-      display:block;
-      transition: transform .35s ease;
-    }
-    .wide-media:hover img{ transform: scale(1.02); }
 
     .writing{
       border: 1px solid rgba(255,255,255,.10);
@@ -403,11 +374,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .reveal, .reveal.in,
-      .avatar-card img,
-      .img-tile img,
-      .wide-media img,
-      .btn, .pill, .card, .social a{
+      .reveal, .reveal.in, .btn, .pill, .card, .social a{
         transition: none !important;
       }
     }
@@ -450,54 +417,49 @@
 
         <div class="avatar" aria-label="Profile photo">
           <div class="avatar-card" title="profile.png">
-            <img src="profile.png" alt="Portrait of Franciele"/>
+            <div class="media-frame">
+              <img src="profile.png" alt="Portrait of Franciele"/>
+              <div class="img-caption">Me, on a good day.</div>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- WHO I AM -->
     <section id="who" class="reveal">
       <div class="section-inner">
         <p class="kicker">Who I am</p>
         <h2 class="h2"><span class="grad">A life built in chapters</span></h2>
         <p class="lead">
           I’ve lived a few very different lives in one. I’m drawn to hard work and clean simplicity — and also to beauty,
-          depth, and the kind of learning that changes you. I like asking “why?” and I like doing the work to earn the answer.
+          depth, and the kind of learning that changes you.
         </p>
 
         <div class="grid-2">
           <div class="card">
             <h3>What I come back to</h3>
-            <p>
-              Nature when I feel noisy inside. Painting when I want to be honest. Meditation when I need to remember
-              that I’m not my thoughts.
-            </p>
+            <p>Nature, painting, and meditation — the three things that keep me honest.</p>
           </div>
           <div class="card">
             <h3>What I’m always doing</h3>
-            <p>
-              Reading, traveling, and falling into random internet rabbit holes — usually with a notebook nearby.
-            </p>
+            <p>Reading, traveling, and falling into random internet rabbit holes.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TRAVEL -->
     <section id="travel" class="reveal">
       <div class="section-inner">
         <p class="kicker">Travel</p>
         <h2 class="h2"><span class="grad">The outer world</span></h2>
         <p class="lead">
           I’ve visited <strong>12 countries</strong> and <strong>34 U.S. National Parks</strong>. I travel for perspective — to feel small in a good way,
-          and to return home with a calmer mind.
+          and to come back with a calmer mind.
         </p>
 
-        <!-- NEW: hiking photo placeholder -->
-        <div class="wide-media" aria-label="Hiking photo">
+        <div class="media-frame" style="margin-top:14px;" aria-label="Hiking photo">
           <img src="hiking.png" alt="Hiking photo"/>
-          <div class="img-caption">A reminder I keep collecting: the best views require some effort.</div>
+          <div class="img-caption">hiking.png</div>
         </div>
 
         <div class="grid-2">
@@ -513,40 +475,34 @@
       </div>
     </section>
 
-    <!-- PAINTINGS -->
     <section id="paintings" class="reveal">
       <div class="section-inner">
         <p class="kicker">Paintings</p>
         <h2 class="h2"><span class="grad">Where words stop</span></h2>
-        <p class="lead">
-          Painting slows me down. It’s how I practice attention — and how I translate feelings into something I can see.
-        </p>
+        <p class="lead">Painting slows me down. It’s how I practice attention.</p>
 
         <div class="img-grid" aria-label="Painting gallery">
-          <figure class="img-tile">
+          <div class="media-frame">
             <img src="painting-1.png" alt="Painting 1"/>
-            <figcaption class="img-caption">Painting I</figcaption>
-          </figure>
-          <figure class="img-tile">
+            <div class="img-caption">Painting I</div>
+          </div>
+          <div class="media-frame">
             <img src="painting-2.png" alt="Painting 2"/>
-            <figcaption class="img-caption">Painting II</figcaption>
-          </figure>
-          <figure class="img-tile">
+            <div class="img-caption">Painting II</div>
+          </div>
+          <div class="media-frame">
             <img src="painting-3.png" alt="Painting 3"/>
-            <figcaption class="img-caption">Painting III</figcaption>
-          </figure>
+            <div class="img-caption">Painting III</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- REFLECTIONS -->
     <section id="reflections" class="reveal">
       <div class="section-inner">
         <p class="kicker">Reflections</p>
         <h2 class="h2"><span class="grad">Notes to myself</span></h2>
-        <p class="lead">
-          Sometimes I write to understand what I’m living. Sometimes I write to let it pass through me.
-        </p>
+        <p class="lead">Sometimes I write to understand what I’m living.</p>
 
         <div class="writing">
           <h3>While Everything Moves</h3>
@@ -595,36 +551,32 @@ if it will exist</pre>
       </div>
     </section>
 
-    <!-- MEDITATION -->
     <section id="meditation" class="reveal">
       <div class="section-inner">
         <p class="kicker">Meditation</p>
         <h2 class="h2"><span class="grad">Stillness</span></h2>
         <p class="lead">
           Meditation is training. It makes my attention steadier — and my life less reactive. I did an 8-day silent retreat,
-          and it reset something simple: I can be with what’s here, without rushing to escape it.
+          and it reset something simple: I can be with what’s here.
         </p>
 
-        <div class="wide-media" aria-label="Monastery photo">
+        <div class="media-frame" style="margin-top:14px;" aria-label="Monastery photo">
           <img src="monastery.png" alt="Monastery where Franciele did an 8-day silent retreat"/>
           <div class="img-caption">The monastery — where silence felt like a teacher.</div>
         </div>
       </div>
     </section>
 
-    <!-- READINGS & MOVIES -->
     <section id="media" class="reveal">
       <div class="section-inner">
         <p class="kicker">Readings & movies</p>
         <h2 class="h2"><span class="grad">What I’m into</span></h2>
-        <p class="lead">
-          Books and films are two of my favorite ways to borrow perspective — and to remember that there are many ways to live.
-        </p>
+        <p class="lead">Two ways I borrow perspective.</p>
 
         <div class="grid-2">
           <div class="card">
             <h3>Reading list</h3>
-            <p>My Goodreads: what I’m reading, what I loved, and what I didn’t.</p>
+            <p>My Goodreads: what I’m reading and what I’ve rated.</p>
             <div style="margin-top:12px;">
               <a class="btn" href="https://www.goodreads.com/user/show/177005295-franciele-nunes-da-silva" target="_blank" rel="noreferrer noopener">
                 Goodreads →
@@ -634,7 +586,7 @@ if it will exist</pre>
 
           <div class="card">
             <h3>Movies</h3>
-            <p>My Filmaffinity ratings: stories, moods, and the ones that stayed with me.</p>
+            <p>My Filmaffinity ratings: the ones that stayed with me.</p>
             <div style="margin-top:12px;">
               <a class="btn" href="https://www.filmaffinity.com/us/userratings.php?user_id=7077969" target="_blank" rel="noreferrer noopener">
                 Filmaffinity →
@@ -645,7 +597,6 @@ if it will exist</pre>
       </div>
     </section>
 
-    <!-- FLOKI -->
     <section id="floki" class="reveal">
       <div class="section-inner">
         <p class="kicker">Floki</p>
@@ -655,14 +606,13 @@ if it will exist</pre>
           he cares about walks.
         </p>
 
-        <div class="wide-media" aria-label="Floki photo">
+        <div class="media-frame" style="margin-top:14px;" aria-label="Floki photo">
           <img src="floki-1.png" alt="Floki the dog"/>
-          <div class="img-caption">Floki — the reminder to breathe and go outside.</div>
+          <div class="img-caption">Floki</div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="reveal">
       <div class="footer-inner">
         <div class="fineprint">
@@ -678,17 +628,14 @@ if it will exist</pre>
   </div>
 
   <script>
-    // year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // reveal on scroll
     const els = Array.from(document.querySelectorAll(".reveal"));
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) if (e.isIntersecting) e.target.classList.add("in");
     }, { threshold: 0.12 });
     els.forEach(el => io.observe(el));
 
-    // smooth anchor scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (ev) => {
         const id = a.getAttribute("href");
@@ -700,10 +647,9 @@ if it will exist</pre>
       });
     });
 
-    // Stars background (subtle)
+    // Subtle stars
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d", { alpha: true });
-
     let W, H, stars;
     const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -717,40 +663,32 @@ if it will exist</pre>
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       buildStars();
     }
-
     function rand(min, max){ return Math.random() * (max - min) + min; }
-
     function buildStars(){
-      const count = Math.round((W * H) / 11000); // lower density than before
+      const count = Math.round((W * H) / 12000);
       stars = new Array(count).fill(0).map(() => ({
-        x: rand(0, W),
-        y: rand(0, H),
+        x: rand(0, W), y: rand(0, H),
         r: rand(0.6, 1.5),
-        a: rand(0.06, 0.28),
+        a: rand(0.06, 0.26),
         tw: rand(0.002, 0.007),
         phase: rand(0, Math.PI * 2),
         drift: rand(0.018, 0.07)
       }));
     }
-
     let t = 0;
     function draw(){
       t += 1;
       ctx.clearRect(0, 0, W, H);
-
       for (const s of stars){
         const twinkle = (Math.sin(t * s.tw + s.phase) + 1) / 2;
         const alpha = s.a * (0.60 + 0.40 * twinkle);
-
         s.y += s.drift;
         if (s.y > H + 10) { s.y = -10; s.x = rand(0, W); }
-
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${alpha})`;
         ctx.fill();
       }
-
       requestAnimationFrame(draw);
     }
 
