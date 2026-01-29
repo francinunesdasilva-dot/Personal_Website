@@ -10,17 +10,29 @@
     body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #000; color: #ddd; }
     .float { animation: float 6s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-    body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(white, rgba(255,255,255,0)) 1px 1px; background-size: 20px 20px; z-index: -2; opacity: 0.05; animation: twinkle 10s linear infinite; }
-    @keyframes twinkle { 0%, 100% { opacity: 0.05; } 50% { opacity: 0.15; } }
-    .gradient-text { background: linear-gradient(270deg, #4ade80, #3b82f6, #4ade80); background-size: 600% 600%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientAnimation 10s ease infinite; }
+
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(white, rgba(255,255,255,0.05)) 2px 2px;
+      background-size: 30px 30px; z-index: -2; opacity: 0.03;
+      animation: twinkle 20s linear infinite;
+    }
+    @keyframes twinkle { 0%, 100% { opacity: 0.03; } 50% { opacity: 0.07; } }
+
+    .gradient-text { background: linear-gradient(270deg, #4ade80, #3b82f6); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientAnimation 15s ease infinite; }
     @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
     .fade-up { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .particle { position: absolute; width: 4px; height: 4px; background: rgba(74, 222, 128, 0.6); border-radius: 50%; animation: floatParticle linear infinite; }
+
+    .particle { position: absolute; width: 3px; height: 3px; background: rgba(74, 222, 128, 0.4); border-radius: 50%; animation: floatParticle linear infinite; }
     @keyframes floatParticle { 0% { transform: translateY(0px); } 100% { transform: translateY(-100vh); } }
+
     .parallax { transform: translateZ(0); perspective: 1px; overflow-x: hidden; }
-    .glow-hover:hover { box-shadow: 0 0 25px rgba(74, 222, 128, 0.7); transform: scale(1.06); transition: all 0.5s ease; }
+    .glow-hover:hover { box-shadow: 0 0 15px rgba(74, 222, 128, 0.5); transform: scale(1.03); transition: all 0.5s ease; }
     .hover-sound { cursor: pointer; }
+    .social-icons a { margin: 0 0.5rem; color: #4ade80; transition: color 0.3s; }
+    .social-icons a:hover { color: #3b82f6; }
   </style>
 </head>
 <body class="selection:bg-white selection:text-black parallax"> 
@@ -37,28 +49,39 @@
         <span class="gradient-text font-light">Franciele</span>
         <span class="gradient-text font-semibold"> Nunes Da Silva</span>
       </h1>
-      <p class="mt-6 text-lg text-gray-400 max-w-2xl">Founder‑minded, curious by nature, and guided by reflection. This is a living space where my travels, art, thoughts, and inner work intersect.</p>
-      <p class="mt-4 text-gray-400 max-w-2xl">Here you will find a record of the journeys that have shaped me, the art I create, the meditative practices I explore, and the simple joys of life, including the company of my loyal companion, Floki.</p>
+      <p class="mt-6 text-lg text-gray-400 max-w-2xl">I move through life with curiosity, reflection, and a deep fascination for the small and profound moments alike. This space captures my journey, my creativity, and the things that inspire me most.</p>
+      <p class="mt-4 text-gray-400 max-w-2xl">You’ll find my stories from travels, glimpses of my paintings, reflections of my inner world, meditation practices, and moments with my loyal companion, Floki.</p>
       <div class="mt-6">
-        <a href="#Travel" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-emerald-400 text-black font-semibold rounded-lg hover:from-emerald-400 hover:to-blue-500 transition-all duration-500 glow-hover hover-sound">Explore</a>
+        <a href="#Who" class="px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-500 transition-all duration-500 glow-hover hover-sound">Discover</a>
       </div>
     </div>
-    <div class="aspect-square bg-gray-900 rounded-3xl flex items-center justify-center text-gray-600 float glow-hover hover-sound">Your photo</div>
+    <div class="aspect-square rounded-3xl overflow-hidden float glow-hover hover-sound">
+      <img src="profile.png" alt="Franciele" class="w-full h-full object-cover">
+    </div>
   </header>
+
+  <!-- Who I Am -->
+  <section id="Who" class="max-w-6xl mx-auto px-6 py-24 fade-up">
+    <h2 class="text-3xl md:text-5xl font-semibold gradient-text mb-6">Who I Am</h2>
+    <p>Raised in the heart of Minas Gerais on a farm, I learned early on to navigate life with independence and curiosity. My journey has taken me across countries, languages, and experiences, shaping a life of resilience, exploration, and wonder.</p>
+    <p class="mt-4">I’m drawn to painting, meditation, nature, reading, and travel. Every moment is an opportunity to explore, reflect, and create a life full of discovery and meaning.</p>
+  </section>
 
   <!-- Travel -->
   <section id="Travel" class="max-w-6xl mx-auto px-6 py-24 fade-up">
     <h2 class="text-3xl md:text-5xl font-semibold gradient-text mb-6">Travel</h2>
-    <p>I have visited <strong>12 countries</strong> and <strong>34 US National Parks</strong>, exploring landscapes, cultures, and adventures that continue to inspire my work and life.</p>
+    <p>Over the years, I’ve explored <strong>12 countries</strong> and visited <strong>34 US National Parks</strong>. Each journey leaves me with new perspectives, stories, and inspirations that shape how I see the world and myself.</p>
+    <p class="mt-4">Travel isn’t just about destinations—it’s a lens to experience life, notice the beauty in landscapes, people, and fleeting moments, and carry those impressions back into daily living.</p>
   </section>
 
   <!-- Paintings -->
   <section id="Paintings" class="max-w-6xl mx-auto px-6 py-24 fade-up">
     <h2 class="text-3xl md:text-5xl font-semibold gradient-text mb-6">Paintings</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-gray-800 h-64 glow-hover hover-sound flex items-center justify-center">Painting 1</div>
-      <div class="bg-gray-800 h-64 glow-hover hover-sound flex items-center justify-center">Painting 2</div>
-      <div class="bg-gray-800 h-64 glow-hover hover-sound flex items-center justify-center">Painting 3</div>
+    <p>Painting is how I give life to thoughts, feelings, and moments. Each work is a reflection of what I notice in myself and the world around me, captured through color, texture, and form.</p>
+    <div class="grid md:grid-cols-3 gap-6 mt-6">
+      <div class="overflow-hidden rounded-2xl glow-hover hover-sound h-64"><img src="painting-1.png" alt="Painting 1" class="w-full h-full object-cover"></div>
+      <div class="overflow-hidden rounded-2xl glow-hover hover-sound h-64"><img src="painting-2.png" alt="Painting 2" class="w-full h-full object-cover"></div>
+      <div class="overflow-hidden rounded-2xl glow-hover hover-sound h-64"><img src="painting-3.png" alt="Painting 3" class="w-full h-full object-cover"></div>
     </div>
   </section>
 
@@ -67,51 +90,45 @@
     <h2 class="text-3xl md:text-5xl font-semibold gradient-text mb-6">Reflections</h2>
     <article class="mb-12">
       <h3 class="text-xl font-semibold mb-2">While Everything Moves</h3>
-      <p>Everything passes.<br>Look up at the sky and notice how the clouds keep moving…<br>After just a few seconds of watching them, they are no longer in the same place.<br><br>And inside—what is there?<br>Amid so many uncertainties, emptiness, and loneliness, everything is still in motion.<br>We may not yet know why, but movement is necessary.<br>Life is movement.<br><br>No matter how misaligned things may seem, they are, in truth, connected on an invisible plane.<br>Even if we don’t understand how, this movement was planned and is part of a greater journey;<br>a journey we are walking at every moment.<br><br>We don’t know where we are going, yet we continue forward, carried by movement itself.<br>What shapes our experience along the way are the choices we make.<br><br>The secret of life, then, lies in choosing what is right—<br>what makes sense—while we are in motion.</p>
+      <p>Look up at the sky and notice how the clouds keep moving…<br>
+      After just a few seconds of watching them, they are no longer in the same place.</p>
+      <p>And inside—what is there?<br>
+      Amid so many uncertainties, emptiness, and loneliness, everything is still in motion.<br>
+      We may not yet know why, but movement is necessary.<br>
+      Life is movement.</p>
+      <p>No matter how misaligned things may seem, they are, in truth, connected on an invisible plane.<br>
+      Even if we don’t understand how, this movement was planned and is part of a greater journey;<br>
+      a journey we are walking at every moment.</p>
+      <p>We don’t know where we are going, yet we continue forward, carried by movement itself.<br>
+      What shapes our experience along the way are the choices we make.</p>
+      <p>The secret of life, then, lies in choosing what is right—<br>
+      what makes sense—while we are in motion.</p>
     </article>
     <article>
       <h3 class="text-xl font-semibold mb-2">Tomorrow</h3>
-      <p>I am running because I have a place to be<br>A place that is magical and sweet<br>Where pain shall not exist<br>But colorful balloons, dance, and light<br><br>I am rushing to get to this place<br>As I need to live in it<br>If there is something so beautiful<br>How could one live a different life otherwise?<br><br>But there is a cost to get to this place<br>A price that few are willing to pay<br>And that is for not living in the present<br>And perhaps in constant pain<br><br>The place I long for is called tomorrow.<br>I will keep on chasing tomorrow<br>Even though I don't know<br>if it will exist</p>
+      <p>I am running because I have a place to be<br>
+      A place that is magical and sweet<br>
+      Where pain shall not exist<br>
+      But colorful balloons, dance, and light</p>
+      <p>I am rushing to get to this place<br>
+      As I need to live in it<br>
+      If there is something so beautiful<br>
+      How could one live a different life otherwise?</p>
+      <p>But there is a cost to get to this place<br>
+      A price that few are willing to pay<br>
+      And that is for not living in the present<br>
+      And perhaps in constant pain</p>
+      <p>The place I long for is called tomorrow.<br>
+      I will keep on chasing tomorrow<br>
+      Even though I don't know<br>
+      if it will exist</p>
     </article>
   </section>
 
-  <!-- Footer -->
-  <footer class="max-w-6xl mx-auto px-6 py-16 border-t border-gray-800 text-center fade-up glow-hover hover-sound">
-    <p class="text-sm text-gray-500">© Franciele Nunes Da Silva · franciele.xyz</p>
-  </footer>
-
-  <script>
-    const faders = document.querySelectorAll('.fade-up');
-    const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
-      });
-    }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
-
-    const particleContainer = document.getElementById('particles');
-    for(let i=0;i<150;i++){
-      const p = document.createElement('div');
-      p.classList.add('particle');
-      p.style.left = Math.random()*100 + 'vw';
-      p.style.animationDuration = 5+Math.random()*10 + 's';
-      p.style.width = 2+Math.random()*3 + 'px';
-      p.style.height = p.style.width;
-      particleContainer.appendChild(p);
-    }
-
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      document.querySelectorAll('.fade-up').forEach(el => {
-        el.style.transform = `translateY(${30 - scrolled*0.1}px)`;
-      });
-    });
-
-    const hoverSound = document.getElementById('hover-sound');
-    document.querySelectorAll('.hover-sound').forEach(el => {
-      el.addEventListener('mouseenter', () => { hoverSound.currentTime = 0; hoverSound.play(); });
-    });
-  </script>
-</body>
-</html>
+  <!-- Meditation -->
+  <section id="Meditation" class="max-w-6xl mx-auto px-6 py-24 fade-up">
+    <h2 class="text-3xl md:text-5xl font-semibold gradient-text mb-6">Meditation</h2>
+    <p>Meditation, for me, is one of the hardest things one can do, especially in the world we live in. The constant stimuli, chaos, and noise make it very difficult to sit quietly and observe the mind. As with anything in life, one becomes better with practice, yet even short periods of dedicated meditation are a challenge to truly examine and understand oneself from within.</p>
+    <p>Through daily practice and an 8-day silent retreat at a monastery, I’ve slowly learned the quiet power of presence, discovering clarity, stillness, and a deeper connection to my inner world.</p>
+    <div class="overflow-hidden rounded-2xl mt-6 h-64 glow-hover hover-sound"><img src="monastery.png" alt="Monastery" class="w-full h-full object-cover"></div>
+  </section>
