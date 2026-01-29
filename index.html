@@ -9,8 +9,6 @@
   <style>
     :root{
       --bg: #070913;
-      --panel: rgba(255,255,255,.05);
-      --panel2: rgba(255,255,255,.035);
       --text: rgba(255,255,255,.86);
       --muted: rgba(255,255,255,.62);
       --line: rgba(255,255,255,.10);
@@ -177,7 +175,7 @@
       }
     }
 
-    /* NEW: no-crop image frame */
+    /* Image frame: NEVER CROP + MAX HEIGHT CAP */
     .media-frame{
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.02);
@@ -187,10 +185,11 @@
     }
     .media-frame img{
       width: 100%;
-      height: auto;              /* key: responsive height */
+      height: auto;
+      max-height: 520px;     /* cap for tall images */
+      object-fit: contain;   /* never crop */
       display: block;
-      object-fit: contain;       /* key: never crop */
-      background: rgba(0,0,0,.12); /* looks good if image has transparency or odd aspect */
+      background: rgba(0,0,0,.12);
     }
     .img-caption{
       padding: 12px 12px 12px;
@@ -221,9 +220,7 @@
       mix-blend-mode: screen;
       filter: blur(12px);
     }
-    .avatar-card .media-frame{
-      border-radius: 22px;
-    }
+    .avatar-card .media-frame{ border-radius: 22px; }
 
     section{
       margin-top: 16px;
@@ -289,7 +286,6 @@
       font-size: 14.5px;
     }
 
-    /* paintings: now no-crop too */
     .img-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -297,9 +293,6 @@
       margin-top: 14px;
     }
     @media (max-width: 860px){ .img-grid{ grid-template-columns: 1fr; } }
-    .img-grid .media-frame{
-      border-radius: 18px;
-    }
 
     .writing{
       border: 1px solid rgba(255,255,255,.10);
@@ -374,7 +367,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .reveal, .reveal.in, .btn, .pill, .card, .social a{
+      .reveal, .reveal.in{
         transition: none !important;
       }
     }
@@ -390,18 +383,16 @@
       <div class="hero">
         <div>
           <h1 class="name"><span class="grad">Franciele Nunes Da Silva</span></h1>
-
           <p class="subtitle">
             I grew up on a farm in the interior of Minas Gerais, Brazil. I left home young, worked early, changed paths,
             learned English fast, and built a life in the U.S. — shaped by discipline, curiosity, and a lot of reinvention.
           </p>
-
           <p class="subtitle">
             I’m happiest when my days include at least one of these: nature, paint on my hands, a good book,
             quiet attention, and something new to learn.
           </p>
 
-          <div class="meta-row" aria-label="Highlights">
+          <div class="meta-row">
             <div class="pill">12 countries</div>
             <div class="pill">34 U.S. National Parks</div>
             <div class="pill">Painting</div>
@@ -415,11 +406,11 @@
           </div>
         </div>
 
-        <div class="avatar" aria-label="Profile photo">
-          <div class="avatar-card" title="profile.png">
+        <div class="avatar">
+          <div class="avatar-card">
             <div class="media-frame">
               <img src="profile.png" alt="Portrait of Franciele"/>
-              <div class="img-caption">Me, on a good day.</div>
+              <div class="img-caption">profile.png</div>
             </div>
           </div>
         </div>
@@ -434,17 +425,6 @@
           I’ve lived a few very different lives in one. I’m drawn to hard work and clean simplicity — and also to beauty,
           depth, and the kind of learning that changes you.
         </p>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3>What I come back to</h3>
-            <p>Nature, painting, and meditation — the three things that keep me honest.</p>
-          </div>
-          <div class="card">
-            <h3>What I’m always doing</h3>
-            <p>Reading, traveling, and falling into random internet rabbit holes.</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -457,20 +437,9 @@
           and to come back with a calmer mind.
         </p>
 
-        <div class="media-frame" style="margin-top:14px;" aria-label="Hiking photo">
+        <div class="media-frame" style="margin-top:14px;">
           <img src="hiking.png" alt="Hiking photo"/>
           <div class="img-caption">hiking.png</div>
-        </div>
-
-        <div class="grid-2">
-          <div class="card">
-            <h3>National Parks</h3>
-            <p>Quiet trails, early mornings, and landscapes that reset your nervous system.</p>
-          </div>
-          <div class="card">
-            <h3>Cities</h3>
-            <p>Architecture, food, and the energy of places where history is still visible.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -479,9 +448,8 @@
       <div class="section-inner">
         <p class="kicker">Paintings</p>
         <h2 class="h2"><span class="grad">Where words stop</span></h2>
-        <p class="lead">Painting slows me down. It’s how I practice attention.</p>
 
-        <div class="img-grid" aria-label="Painting gallery">
+        <div class="img-grid">
           <div class="media-frame">
             <img src="painting-1.png" alt="Painting 1"/>
             <div class="img-caption">Painting I</div>
@@ -502,7 +470,6 @@
       <div class="section-inner">
         <p class="kicker">Reflections</p>
         <h2 class="h2"><span class="grad">Notes to myself</span></h2>
-        <p class="lead">Sometimes I write to understand what I’m living.</p>
 
         <div class="writing">
           <h3>While Everything Moves</h3>
@@ -555,14 +522,10 @@ if it will exist</pre>
       <div class="section-inner">
         <p class="kicker">Meditation</p>
         <h2 class="h2"><span class="grad">Stillness</span></h2>
-        <p class="lead">
-          Meditation is training. It makes my attention steadier — and my life less reactive. I did an 8-day silent retreat,
-          and it reset something simple: I can be with what’s here.
-        </p>
 
-        <div class="media-frame" style="margin-top:14px;" aria-label="Monastery photo">
+        <div class="media-frame" style="margin-top:14px;">
           <img src="monastery.png" alt="Monastery where Franciele did an 8-day silent retreat"/>
-          <div class="img-caption">The monastery — where silence felt like a teacher.</div>
+          <div class="img-caption">monastery.png</div>
         </div>
       </div>
     </section>
@@ -571,7 +534,6 @@ if it will exist</pre>
       <div class="section-inner">
         <p class="kicker">Readings & movies</p>
         <h2 class="h2"><span class="grad">What I’m into</span></h2>
-        <p class="lead">Two ways I borrow perspective.</p>
 
         <div class="grid-2">
           <div class="card">
@@ -601,14 +563,10 @@ if it will exist</pre>
       <div class="section-inner">
         <p class="kicker">Floki</p>
         <h2 class="h2"><span class="grad">My daily reset</span></h2>
-        <p class="lead">
-          Floki is funny, stubborn, and extremely good at pulling me out of my head. He doesn’t care about plans —
-          he cares about walks.
-        </p>
 
-        <div class="media-frame" style="margin-top:14px;" aria-label="Floki photo">
+        <div class="media-frame" style="margin-top:14px;">
           <img src="floki-1.png" alt="Floki the dog"/>
-          <div class="img-caption">Floki</div>
+          <div class="img-caption">floki-1.png</div>
         </div>
       </div>
     </section>
@@ -618,7 +576,7 @@ if it will exist</pre>
         <div class="fineprint">
           © <span id="year"></span> Franciele Nunes Da Silva • franciele.xyz
         </div>
-        <div class="social" aria-label="Social links">
+        <div class="social">
           <a href="https://www.linkedin.com/in/franciele-nunesdasilva/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
           <a href="https://x.com/imfloka" target="_blank" rel="noreferrer noopener">X</a>
           <a href="https://www.instagram.com/iamfrancielenunesdasilva" target="_blank" rel="noreferrer noopener">Instagram</a>
@@ -636,18 +594,6 @@ if it will exist</pre>
     }, { threshold: 0.12 });
     els.forEach(el => io.observe(el));
 
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener("click", (ev) => {
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const target = document.querySelector(id);
-        if (!target) return;
-        ev.preventDefault();
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-
-    // Subtle stars
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d", { alpha: true });
     let W, H, stars;
