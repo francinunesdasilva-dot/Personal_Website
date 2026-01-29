@@ -70,17 +70,16 @@
       margin-top: 44px;
     }
 
-    /* SECTION TITLES: make bigger + clearer */
     .kicker{
       color: rgba(255,255,255,.72);
-      font-size: 14px;         /* bigger */
-      letter-spacing: .14em;   /* less spaced so it reads */
+      font-size: 14px;
+      letter-spacing: .14em;
       text-transform: uppercase;
       margin: 0 0 10px;
     }
 
     h1{
-      margin: 0 0 18px;        /* more space below name */
+      margin: 0;
       font-size: clamp(36px, 4.8vw, 58px);
       letter-spacing: -0.02em;
       line-height: 1.02;
@@ -106,16 +105,15 @@
     }
     @media (max-width: 860px){ .hero-grid{ grid-template-columns: 1fr; } }
 
-    /* space between name and text */
+    /* MORE SPACE below the name */
     .intro{
-      margin-top: 6px;
+      margin-top: 26px; /* increased */
       color: var(--muted);
       font-size: 16px;
       line-height: 1.75;
       max-width: 70ch;
     }
 
-    /* Media: portrait-friendly, fluid, “gallery mat” background */
     .media-frame{
       margin-top: 14px;
       border-radius: var(--radius2);
@@ -135,13 +133,11 @@
       background: transparent;
     }
 
-    /* remove file-name captions entirely */
     .img-caption{ display:none; }
 
-    /* headings inside blocks */
     h2{
       margin: 0 0 12px;
-      font-size: 28px;       /* bigger section headings */
+      font-size: 28px;
       letter-spacing: -0.01em;
       line-height: 1.15;
     }
@@ -273,7 +269,7 @@
           <h1><span class="grad">Franciele Nunes Da Silva</span></h1>
 
           <p class="intro">
-            I’ve lived a few very different lives in one. I’m drawn to hard work and clean simplicity — and also to depth,
+            I have lived a few very different lives in one. I am drawn to hard work and clean simplicity and also to depth,
             wonder, and the kind of learning that changes you. I navigate life with curiosity, reflection, and a deep
             appreciation for moments that reveal meaning. This space captures my journey, passions, and the inspirations
             that shape my world.
@@ -303,7 +299,10 @@
       <p class="kicker">Travel</p>
       <h2><span class="grad">The outer world</span></h2>
       <p class="lead">
-        I travel for perspective — to feel small in a good way, and to come back with a calmer mind.
+        I travel for perspective and to come back with a calmer mind. Every journey brings new perspectives, unforgettable
+        encounters, and moments that fuel my creativity and reflections. Travel allows me to connect with the world and
+        with myself, capturing experiences that are a boost of creativity for both my professional and personal life.
+        I have visited only 12 countries but I have spent a lot of time in the US national parks having visited 34 of them.
       </p>
 
       <div class="media-frame">
@@ -316,7 +315,7 @@
       <p class="kicker">Paintings</p>
       <h2><span class="grad">Where words stop</span></h2>
       <p class="lead">
-        Painting slows me down. It’s how I practice attention.
+        Painting slows me down. It is how I practice attention.
       </p>
 
       <div class="paint-grid">
@@ -385,8 +384,8 @@ if it will exist</pre>
       <p class="kicker">Meditation</p>
       <h2><span class="grad">Stillness</span></h2>
       <p class="lead">
-        Meditation is training. It makes my attention steadier — and my life less reactive. I did an 8-day silent retreat,
-        and it reset something simple: I can be with what’s here.
+        Meditation is training. It makes my attention steadier and my life less reactive. I did an 8-day silent retreat,
+        and it reset something simple: I can be with what is here.
       </p>
 
       <div class="media-frame">
@@ -402,7 +401,7 @@ if it will exist</pre>
       <div class="grid-2">
         <div class="card">
           <h3>Reading list</h3>
-          <p>My Goodreads: what I’m reading and what I’ve rated.</p>
+          <p>My Goodreads: what I am reading and what I have rated.</p>
           <div style="margin-top:12px;">
             <a class="btn" href="https://www.goodreads.com/user/show/177005295-franciele-nunes-da-silva" target="_blank" rel="noreferrer noopener">
               Goodreads →
@@ -427,8 +426,8 @@ if it will exist</pre>
       <p class="kicker">Floki</p>
       <h2><span class="grad">My daily reset</span></h2>
       <p class="lead">
-        Floki is funny, stubborn, and extremely good at pulling me out of my head. He doesn’t care about plans —
-        he cares about walks.
+        Floki is funny, stubborn, and extremely good at pulling me out of my head. He does not care about plans.
+        He cares about walks.
       </p>
 
       <div class="media-frame">
@@ -441,7 +440,7 @@ if it will exist</pre>
       <div class="social">
         <a href="https://www.linkedin.com/in/franciele-nunesdasilva/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
         <a href="https://x.com/imfloka" target="_blank" rel="noreferrer noopener">X</a>
-        <a href="https://www.instagram.com/iamfrancielenunesdasilva" target="_blank" rel="noreferrer noopener">Instagram</a>
+        <a href="https://www.instagram.com/iamfrancielenunesdasilva/" target="_blank" rel="noreferrer noopener">Instagram</a>
       </div>
     </footer>
   </div>
@@ -455,7 +454,6 @@ if it will exist</pre>
     }, { threshold: 0.12 });
     els.forEach(el => io.observe(el));
 
-    // subtle stars
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d", { alpha: true });
     let W, H, stars;
