@@ -66,39 +66,26 @@
       color: transparent;
     }
 
-    /* Fluid layout: spacing only, no separators */
     .block{
-      margin-top: 40px;
+      margin-top: 44px;
     }
 
+    /* SECTION TITLES: make bigger + clearer */
     .kicker{
-      color: rgba(255,255,255,.52);
-      font-size: 12px;
-      letter-spacing: .22em;
+      color: rgba(255,255,255,.72);
+      font-size: 14px;         /* bigger */
+      letter-spacing: .14em;   /* less spaced so it reads */
       text-transform: uppercase;
-      margin: 0 0 8px;
+      margin: 0 0 10px;
     }
+
     h1{
-      margin: 0 0 12px;
-      font-size: clamp(34px, 4.5vw, 54px);
+      margin: 0 0 18px;        /* more space below name */
+      font-size: clamp(36px, 4.8vw, 58px);
       letter-spacing: -0.02em;
       line-height: 1.02;
     }
-    h2{
-      margin: 0 0 10px;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-    .lead{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 15.5px;
-      max-width: 78ch;
-    }
 
-    /* hero becomes one fluid “panel” */
     .hero{
       margin-top: 10px;
       border-radius: var(--radius);
@@ -108,7 +95,7 @@
         rgba(255,255,255,.03);
       box-shadow: var(--shadow);
       overflow: hidden;
-      padding: 22px;
+      padding: 24px;
     }
 
     .hero-grid{
@@ -119,53 +106,13 @@
     }
     @media (max-width: 860px){ .hero-grid{ grid-template-columns: 1fr; } }
 
-    .subtitle{
-      margin: 0 0 12px;
+    /* space between name and text */
+    .intro{
+      margin-top: 6px;
       color: var(--muted);
-      font-size: 15.25px;
-      line-height: 1.65;
-      max-width: 62ch;
-    }
-
-    .meta-row{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .pill{
-      background: rgba(255,255,255,.035);
-      padding: 7px 10px;
-      border-radius: 999px;
-      color: rgba(255,255,255,.72);
-      font-size: 13px;
-      border: 1px solid rgba(255,255,255,.08);
-    }
-
-    .cta-row{
-      display:flex;
-      gap: 10px;
-      margin-top: 14px;
-      flex-wrap: wrap;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.84);
-      font-size: 13.5px;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-      user-select:none;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.045);
-      color: white;
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 70ch;
     }
 
     /* Media: portrait-friendly, fluid, “gallery mat” background */
@@ -187,16 +134,26 @@
       display: block;
       background: transparent;
     }
-    .img-caption{
-      padding: 12px 14px 13px;
-      color: rgba(255,255,255,.70);
-      font-size: 13.25px;
-      line-height: 1.45;
-      background: rgba(0,0,0,.12);
-      backdrop-filter: blur(10px);
+
+    /* remove file-name captions entirely */
+    .img-caption{ display:none; }
+
+    /* headings inside blocks */
+    h2{
+      margin: 0 0 12px;
+      font-size: 28px;       /* bigger section headings */
+      letter-spacing: -0.01em;
+      line-height: 1.15;
     }
 
-    /* paintings: 2 columns */
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16px;
+      max-width: 78ch;
+    }
+
     .paint-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -215,44 +172,43 @@
     }
     @media (max-width: 820px){ .grid-2{ grid-template-columns: 1fr; } }
 
-    /* cards: subtle */
     .card{
       border-radius: var(--radius2);
-      padding: 14px;
+      padding: 16px;
       background: rgba(255,255,255,.022);
       box-shadow: 0 10px 26px rgba(0,0,0,.16);
     }
     .card h3{
       margin: 0 0 6px;
-      font-size: 14.5px;
+      font-size: 16px;
       letter-spacing: -0.01em;
       color: rgba(255,255,255,.90);
     }
     .card p{
       margin: 0;
       color: var(--muted);
-      line-height: 1.6;
-      font-size: 14.5px;
+      line-height: 1.65;
+      font-size: 15.5px;
     }
 
     .writing{
       margin-top: 14px;
       border-radius: var(--radius2);
-      padding: 16px 16px 14px;
+      padding: 18px 18px 16px;
       background: rgba(255,255,255,.022);
       box-shadow: 0 10px 26px rgba(0,0,0,.16);
     }
     .writing h3{
-      margin: 0 0 10px;
-      font-size: 15.5px;
+      margin: 0 0 12px;
+      font-size: 18px;
       color: rgba(255,255,255,.92);
     }
     .writing pre{
       margin: 0;
       white-space: pre-wrap;
       color: rgba(255,255,255,.76);
-      line-height: 1.7;
-      font-size: 14.6px;
+      line-height: 1.8;
+      font-size: 15.5px;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
 
@@ -298,7 +254,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .reveal, .reveal.in, .btn, .social a{
+      .reveal, .reveal.in{
         transition: none !important;
       }
     }
@@ -316,33 +272,17 @@
         <div>
           <h1><span class="grad">Franciele Nunes Da Silva</span></h1>
 
-          <p class="subtitle">
-            I grew up on a farm in the interior of Minas Gerais, Brazil. I left home young, worked early, changed paths,
-            learned English fast, and built a life in the U.S.
+          <p class="intro">
+            I’ve lived a few very different lives in one. I’m drawn to hard work and clean simplicity — and also to depth,
+            wonder, and the kind of learning that changes you. I navigate life with curiosity, reflection, and a deep
+            appreciation for moments that reveal meaning. This space captures my journey, passions, and the inspirations
+            that shape my world.
           </p>
-          <p class="subtitle">
-            I’m happiest when my days include at least one of these: nature, paint on my hands, a good book,
-            quiet attention, and something new to learn.
-          </p>
-
-          <div class="meta-row">
-            <div class="pill">12 countries</div>
-            <div class="pill">34 U.S. National Parks</div>
-            <div class="pill">Painting</div>
-            <div class="pill">Meditation</div>
-          </div>
-
-          <div class="cta-row">
-            <a class="btn" href="#who">Start here →</a>
-            <a class="btn" href="#reflections">Reflections</a>
-            <a class="btn" href="#paintings">Paintings</a>
-          </div>
         </div>
 
         <div>
           <div class="media-frame" style="margin-top:0;">
             <img src="profile.png" alt="Portrait of Franciele"/>
-            <div class="img-caption">profile.png</div>
           </div>
         </div>
       </div>
@@ -353,8 +293,8 @@
       <p class="kicker">Who I am</p>
       <h2><span class="grad">A life built in chapters</span></h2>
       <p class="lead">
-        I’ve lived a few very different lives in one. I’m drawn to hard work and clean simplicity — and also to beauty,
-        depth, and the kind of learning that changes you.
+        I grew up on a farm in the interior of Minas Gerais, Brazil. I left home young, worked early, changed paths,
+        and built a life in the U.S.
       </p>
     </div>
 
@@ -363,13 +303,11 @@
       <p class="kicker">Travel</p>
       <h2><span class="grad">The outer world</span></h2>
       <p class="lead">
-        I’ve visited <strong>12 countries</strong> and <strong>34 U.S. National Parks</strong>. I travel for perspective — to feel small in a good way,
-        and to come back with a calmer mind.
+        I travel for perspective — to feel small in a good way, and to come back with a calmer mind.
       </p>
 
       <div class="media-frame">
         <img src="hiking.png" alt="Hiking photo"/>
-        <div class="img-caption">hiking.png</div>
       </div>
     </div>
 
@@ -377,16 +315,16 @@
     <div class="block reveal" id="paintings">
       <p class="kicker">Paintings</p>
       <h2><span class="grad">Where words stop</span></h2>
-      <p class="lead">Painting slows me down. It’s how I practice attention.</p>
+      <p class="lead">
+        Painting slows me down. It’s how I practice attention.
+      </p>
 
       <div class="paint-grid">
         <div class="media-frame">
           <img src="painting-1.png" alt="Painting 1"/>
-          <div class="img-caption">Painting I</div>
         </div>
         <div class="media-frame">
           <img src="painting-2.png" alt="Painting 2"/>
-          <div class="img-caption">Painting II</div>
         </div>
       </div>
     </div>
@@ -453,7 +391,6 @@ if it will exist</pre>
 
       <div class="media-frame">
         <img src="monastery.png" alt="Monastery where Franciele did an 8-day silent retreat"/>
-        <div class="img-caption">monastery.png</div>
       </div>
     </div>
 
@@ -496,7 +433,6 @@ if it will exist</pre>
 
       <div class="media-frame">
         <img src="floki-1.png" alt="Floki the dog"/>
-        <div class="img-caption">floki-1.png</div>
       </div>
     </div>
 
