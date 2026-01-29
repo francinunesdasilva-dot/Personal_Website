@@ -11,14 +11,14 @@
       --bg: #070913;
       --text: rgba(255,255,255,.86);
       --muted: rgba(255,255,255,.62);
-      --line: rgba(255,255,255,.10);
+      --faint: rgba(255,255,255,.45);
 
       --g1: #35d0ff;
       --g2: #22e1a8;
-      --shadow: 0 16px 50px rgba(0,0,0,.42);
 
       --radius: 22px;
-      --radius2: 16px;
+      --radius2: 18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.30);
     }
 
     *{ box-sizing: border-box; }
@@ -28,17 +28,19 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
       background:
-        radial-gradient(1200px 800px at 18% -10%, rgba(53,208,255,.12), transparent 56%),
-        radial-gradient(1000px 700px at 95% 8%, rgba(34,225,168,.10), transparent 58%),
+        radial-gradient(1200px 820px at 18% -10%, rgba(53,208,255,.12), transparent 56%),
+        radial-gradient(1000px 760px at 95% 8%, rgba(34,225,168,.10), transparent 58%),
+        radial-gradient(900px 900px at 10% 95%, rgba(53,208,255,.06), transparent 55%),
         var(--bg);
       overflow-x: hidden;
     }
 
+    /* stars: keep subtle */
     #stars{
       position: fixed;
       inset: 0;
       z-index: -2;
-      opacity: .58;
+      opacity: .45;
       pointer-events: none;
     }
     .vignette{
@@ -46,16 +48,16 @@
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      background: radial-gradient(1200px 900px at 50% 25%, transparent 62%, rgba(0,0,0,.55) 100%);
+      background: radial-gradient(1200px 900px at 50% 25%, transparent 62%, rgba(0,0,0,.58) 100%);
     }
 
     a{ color: rgba(255,255,255,.86); text-decoration: none; }
     a:hover{ color: white; }
 
     .wrap{
-      width: min(1040px, calc(100% - 44px));
+      width: min(980px, calc(100% - 44px));
       margin: 0 auto;
-      padding: 26px 0 70px;
+      padding: 28px 0 74px;
     }
 
     .grad{
@@ -65,71 +67,95 @@
       color: transparent;
     }
 
-    header{
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.03));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+    /* Fluid layout: no boxed sections */
+    .block{
+      margin-top: 34px;
       position: relative;
     }
-    header::before{
+
+    /* soft “breathing” separators (no lines) */
+    .block::before{
       content:"";
       position:absolute;
-      inset:-120px -120px auto -120px;
-      height: 230px;
-      background:
-        radial-gradient(closest-side at 35% 55%, rgba(53,208,255,.16), transparent 62%),
-        radial-gradient(closest-side at 70% 40%, rgba(34,225,168,.12), transparent 62%);
-      filter: blur(12px);
-      opacity: .75;
+      left: 0; right: 0;
+      top: -18px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.10), transparent);
+      opacity: .25;
+      filter: blur(.2px);
       pointer-events:none;
     }
+    .block:first-of-type::before{ display:none; }
 
+    .kicker{
+      color: rgba(255,255,255,.52);
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+    h1{
+      margin: 0 0 12px;
+      font-size: clamp(34px, 4.5vw, 54px);
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+    }
+    h2{
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15.5px;
+      max-width: 78ch;
+    }
+
+    /* hero becomes one fluid “panel” */
     .hero{
-      display: grid;
+      margin-top: 10px;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(800px 420px at 25% 10%, rgba(53,208,255,.12), transparent 60%),
+        radial-gradient(800px 420px at 85% 70%, rgba(34,225,168,.10), transparent 60%),
+        rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 22px;
+    }
+
+    .hero-grid{
+      display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap: 22px;
-      padding: 24px;
-      align-items: center;
+      align-items:center;
     }
-    @media (max-width: 860px){ .hero{ grid-template-columns: 1fr; } }
-
-    .name{
-      font-size: clamp(34px, 4.2vw, 52px);
-      line-height: 1.02;
-      margin: 0 0 10px;
-      letter-spacing: -0.02em;
-    }
+    @media (max-width: 860px){ .hero-grid{ grid-template-columns: 1fr; } }
 
     .subtitle{
       margin: 0 0 12px;
       color: var(--muted);
       font-size: 15.25px;
-      line-height: 1.6;
+      line-height: 1.65;
       max-width: 62ch;
     }
 
     .meta-row{
-      display: flex;
+      display:flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 12px;
     }
     .pill{
-      border: 1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.035);
       padding: 7px 10px;
       border-radius: 999px;
       color: rgba(255,255,255,.72);
       font-size: 13px;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-    .pill:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.045);
-      color: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.08); /* very soft */
     }
 
     .cta-row{
@@ -144,114 +170,58 @@
       gap: 10px;
       padding: 10px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
       color: rgba(255,255,255,.84);
       font-size: 13.5px;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
       user-select:none;
     }
     .btn:hover{
       transform: translateY(-1px);
-      border-color: rgba(255,255,255,.22);
-      background: rgba(255,255,255,.055);
-      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.045);
       color: white;
     }
 
-    .avatar{
-      border-left: 1px solid rgba(255,255,255,.10);
-      padding-left: 20px;
-      display:flex;
-      justify-content: center;
-      align-items: center;
-    }
-    @media (max-width: 860px){
-      .avatar{
-        border-left: none;
-        border-top: 1px solid rgba(255,255,255,.10);
-        padding-left: 0;
-        padding-top: 16px;
-      }
-    }
-
-    /* Image frame: NEVER CROP + MAX HEIGHT CAP */
+    /* Media: portrait-friendly, fluid, “gallery mat” background */
     .media-frame{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
-      border-radius: 18px;
+      margin-top: 14px;
+      border-radius: var(--radius2);
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,.22);
+      background:
+        radial-gradient(700px 420px at 30% 20%, rgba(53,208,255,.12), transparent 60%),
+        radial-gradient(700px 420px at 80% 70%, rgba(34,225,168,.10), transparent 60%),
+        rgba(255,255,255,.02);
+      box-shadow: 0 14px 42px rgba(0,0,0,.26);
     }
     .media-frame img{
       width: 100%;
       height: auto;
-      max-height: 520px;     /* cap for tall images */
+      max-height: 560px;     /* cap */
       object-fit: contain;   /* never crop */
       display: block;
-      background: rgba(0,0,0,.12);
+      background: transparent;
     }
     .img-caption{
-      padding: 12px 12px 12px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      color: rgba(255,255,255,.72);
+      padding: 12px 14px 13px;
+      color: rgba(255,255,255,.70);
       font-size: 13.25px;
       line-height: 1.45;
-      background: rgba(0,0,0,.16);
-      backdrop-filter: blur(8px);
+      background: rgba(0,0,0,.14);
+      backdrop-filter: blur(10px);
     }
 
-    .avatar-card{
-      width: min(320px, 100%);
-      border-radius: 22px;
-      overflow: hidden;
-      position: relative;
-      transform: translateZ(0);
+    /* paintings: 2 columns (since you removed painting-3) */
+    .paint-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
     }
-    .avatar-card::after{
-      content:"";
-      position:absolute;
-      inset: -2px;
-      background:
-        radial-gradient(closest-side at 28% 22%, rgba(53,208,255,.14), transparent 72%),
-        radial-gradient(closest-side at 82% 62%, rgba(34,225,168,.10), transparent 72%);
-      opacity: .55;
-      pointer-events:none;
-      mix-blend-mode: screen;
-      filter: blur(12px);
-    }
-    .avatar-card .media-frame{ border-radius: 22px; }
-
-    section{
-      margin-top: 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.028));
-      box-shadow: 0 10px 34px rgba(0,0,0,.28);
-      overflow: hidden;
-    }
-    .section-inner{ padding: 20px 22px; }
-
-    .kicker{
-      color: rgba(255,255,255,.56);
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      margin: 0 0 8px;
-    }
-    .h2{
-      margin: 0 0 10px;
-      font-size: 21px;
-      letter-spacing: -0.01em;
-      line-height: 1.2;
-    }
-    .lead{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 15.25px;
-      max-width: 78ch;
-    }
+    @media (max-width: 860px){ .paint-grid{ grid-template-columns: 1fr; } }
+    .paint-grid .media-frame{ margin-top: 0; }
+    .paint-grid .media-frame img{ max-height: 520px; }
 
     .grid-2{
       display:grid;
@@ -261,17 +231,12 @@
     }
     @media (max-width: 820px){ .grid-2{ grid-template-columns: 1fr; } }
 
+    /* cards: remove harsh borders, keep subtle */
     .card{
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
       border-radius: var(--radius2);
       padding: 14px;
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-    .card:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.16);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.025);
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
     }
     .card h3{
       margin: 0 0 6px;
@@ -286,25 +251,16 @@
       font-size: 14.5px;
     }
 
-    .img-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 14px;
-    }
-    @media (max-width: 860px){ .img-grid{ grid-template-columns: 1fr; } }
-
     .writing{
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      background: rgba(255,255,255,.03);
-      padding: 14px 14px 12px;
-      margin-top: 12px;
+      margin-top: 14px;
+      border-radius: var(--radius2);
+      padding: 16px 16px 14px;
+      background: rgba(255,255,255,.025);
+      box-shadow: 0 10px 28px rgba(0,0,0,.18);
     }
     .writing h3{
       margin: 0 0 10px;
       font-size: 15.5px;
-      letter-spacing: -0.01em;
       color: rgba(255,255,255,.92);
     }
     .writing pre{
@@ -317,19 +273,25 @@
     }
 
     footer{
-      margin-top: 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.028);
-      box-shadow: 0 10px 34px rgba(0,0,0,.28);
-    }
-    .footer-inner{
-      padding: 16px 20px;
+      margin-top: 40px;
+      padding-top: 14px;
+      color: rgba(255,255,255,.50);
+      font-size: 12.5px;
       display:flex;
       justify-content: space-between;
-      align-items: center;
+      align-items:center;
       gap: 12px;
       flex-wrap: wrap;
+      position: relative;
+    }
+    footer::before{
+      content:"";
+      position:absolute;
+      left:0; right:0;
+      top:0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+      opacity: .35;
     }
     .social{
       display:flex;
@@ -337,28 +299,23 @@
       flex-wrap: wrap;
     }
     .social a{
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      padding: 9px 11px;
+      padding: 8px 10px;
       border-radius: 999px;
-      font-size: 13px;
-      color: rgba(255,255,255,.78);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.75);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
     }
     .social a:hover{
       transform: translateY(-1px);
-      border-color: rgba(255,255,255,.20);
-      background: rgba(255,255,255,.045);
+      background: rgba(255,255,255,.04);
+      border-color: rgba(255,255,255,.16);
       color: white;
-    }
-    .fineprint{
-      color: rgba(255,255,255,.50);
-      font-size: 12.5px;
     }
 
     .reveal{
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(10px);
       transition: opacity .5s ease, transform .5s ease;
     }
     .reveal.in{
@@ -367,7 +324,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      .reveal, .reveal.in{
+      .reveal, .reveal.in, .btn, .social a{
         transition: none !important;
       }
     }
@@ -378,14 +335,16 @@
   <canvas id="stars"></canvas>
   <div class="vignette"></div>
 
-  <div class="wrap" id="top">
-    <header class="reveal">
-      <div class="hero">
+  <div class="wrap">
+    <!-- HERO -->
+    <div class="hero reveal" id="top">
+      <div class="hero-grid">
         <div>
-          <h1 class="name"><span class="grad">Franciele Nunes Da Silva</span></h1>
+          <h1><span class="grad">Franciele Nunes Da Silva</span></h1>
+
           <p class="subtitle">
             I grew up on a farm in the interior of Minas Gerais, Brazil. I left home young, worked early, changed paths,
-            learned English fast, and built a life in the U.S. — shaped by discipline, curiosity, and a lot of reinvention.
+            learned English fast, and built a life in the U.S.
           </p>
           <p class="subtitle">
             I’m happiest when my days include at least one of these: nature, paint on my hands, a good book,
@@ -406,74 +365,66 @@
           </div>
         </div>
 
-        <div class="avatar">
-          <div class="avatar-card">
-            <div class="media-frame">
-              <img src="profile.png" alt="Portrait of Franciele"/>
-              <div class="img-caption">profile.png</div>
-            </div>
+        <div>
+          <div class="media-frame" style="margin-top:0;">
+            <img src="profile.png" alt="Portrait of Franciele"/>
+            <div class="img-caption">profile.png</div>
           </div>
         </div>
       </div>
-    </header>
+    </div>
 
-    <section id="who" class="reveal">
-      <div class="section-inner">
-        <p class="kicker">Who I am</p>
-        <h2 class="h2"><span class="grad">A life built in chapters</span></h2>
-        <p class="lead">
-          I’ve lived a few very different lives in one. I’m drawn to hard work and clean simplicity — and also to beauty,
-          depth, and the kind of learning that changes you.
-        </p>
+    <!-- WHO -->
+    <div class="block reveal" id="who">
+      <p class="kicker">Who I am</p>
+      <h2><span class="grad">A life built in chapters</span></h2>
+      <p class="lead">
+        I’ve lived a few very different lives in one. I’m drawn to hard work and clean simplicity — and also to beauty,
+        depth, and the kind of learning that changes you.
+      </p>
+    </div>
+
+    <!-- TRAVEL -->
+    <div class="block reveal" id="travel">
+      <p class="kicker">Travel</p>
+      <h2><span class="grad">The outer world</span></h2>
+      <p class="lead">
+        I’ve visited <strong>12 countries</strong> and <strong>34 U.S. National Parks</strong>. I travel for perspective — to feel small in a good way,
+        and to come back with a calmer mind.
+      </p>
+
+      <div class="media-frame">
+        <img src="hiking.png" alt="Hiking photo"/>
+        <div class="img-caption">hiking.png</div>
       </div>
-    </section>
+    </div>
 
-    <section id="travel" class="reveal">
-      <div class="section-inner">
-        <p class="kicker">Travel</p>
-        <h2 class="h2"><span class="grad">The outer world</span></h2>
-        <p class="lead">
-          I’ve visited <strong>12 countries</strong> and <strong>34 U.S. National Parks</strong>. I travel for perspective — to feel small in a good way,
-          and to come back with a calmer mind.
-        </p>
+    <!-- PAINTINGS -->
+    <div class="block reveal" id="paintings">
+      <p class="kicker">Paintings</p>
+      <h2><span class="grad">Where words stop</span></h2>
+      <p class="lead">Painting slows me down. It’s how I practice attention.</p>
 
-        <div class="media-frame" style="margin-top:14px;">
-          <img src="hiking.png" alt="Hiking photo"/>
-          <div class="img-caption">hiking.png</div>
+      <div class="paint-grid">
+        <div class="media-frame">
+          <img src="painting-1.png" alt="Painting 1"/>
+          <div class="img-caption">Painting I</div>
+        </div>
+        <div class="media-frame">
+          <img src="painting-2.png" alt="Painting 2"/>
+          <div class="img-caption">Painting II</div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section id="paintings" class="reveal">
-      <div class="section-inner">
-        <p class="kicker">Paintings</p>
-        <h2 class="h2"><span class="grad">Where words stop</span></h2>
+    <!-- REFLECTIONS -->
+    <div class="block reveal" id="reflections">
+      <p class="kicker">Reflections</p>
+      <h2><span class="grad">Notes to myself</span></h2>
 
-        <div class="img-grid">
-          <div class="media-frame">
-            <img src="painting-1.png" alt="Painting 1"/>
-            <div class="img-caption">Painting I</div>
-          </div>
-          <div class="media-frame">
-            <img src="painting-2.png" alt="Painting 2"/>
-            <div class="img-caption">Painting II</div>
-          </div>
-          <div class="media-frame">
-            <img src="painting-3.png" alt="Painting 3"/>
-            <div class="img-caption">Painting III</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reflections" class="reveal">
-      <div class="section-inner">
-        <p class="kicker">Reflections</p>
-        <h2 class="h2"><span class="grad">Notes to myself</span></h2>
-
-        <div class="writing">
-          <h3>While Everything Moves</h3>
-          <pre>Everything passes.
+      <div class="writing">
+        <h3>While Everything Moves</h3>
+        <pre>Everything passes.
 Look up at the sky and notice how the clouds keep moving…
 After just a few seconds of watching them, they are no longer in the same place.
 
@@ -491,11 +442,11 @@ What shapes our experience along the way are the choices we make.
 
 The secret of life, then, lies in choosing what is right—
 what makes sense—while we are in motion.</pre>
-        </div>
+      </div>
 
-        <div class="writing">
-          <h3>Tomorrow</h3>
-          <pre>I am running because I have a place to be 
+      <div class="writing">
+        <h3>Tomorrow</h3>
+        <pre>I am running because I have a place to be 
 A place that is magical and sweet
 Where pain shall not exist
 But colorful balloons, dance, and light
@@ -514,73 +465,73 @@ The place I long for is called tomorrow.
 I will keep on chasing tomorrow
 Even though I don't know
 if it will exist</pre>
-        </div>
       </div>
-    </section>
+    </div>
 
-    <section id="meditation" class="reveal">
-      <div class="section-inner">
-        <p class="kicker">Meditation</p>
-        <h2 class="h2"><span class="grad">Stillness</span></h2>
+    <!-- MEDITATION -->
+    <div class="block reveal" id="meditation">
+      <p class="kicker">Meditation</p>
+      <h2><span class="grad">Stillness</span></h2>
+      <p class="lead">
+        Meditation is training. It makes my attention steadier — and my life less reactive. I did an 8-day silent retreat,
+        and it reset something simple: I can be with what’s here.
+      </p>
 
-        <div class="media-frame" style="margin-top:14px;">
-          <img src="monastery.png" alt="Monastery where Franciele did an 8-day silent retreat"/>
-          <div class="img-caption">monastery.png</div>
-        </div>
+      <div class="media-frame">
+        <img src="monastery.png" alt="Monastery where Franciele did an 8-day silent retreat"/>
+        <div class="img-caption">monastery.png</div>
       </div>
-    </section>
+    </div>
 
-    <section id="media" class="reveal">
-      <div class="section-inner">
-        <p class="kicker">Readings & movies</p>
-        <h2 class="h2"><span class="grad">What I’m into</span></h2>
+    <!-- MEDIA -->
+    <div class="block reveal" id="media">
+      <p class="kicker">Readings & movies</p>
+      <h2><span class="grad">What I’m into</span></h2>
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Reading list</h3>
-            <p>My Goodreads: what I’m reading and what I’ve rated.</p>
-            <div style="margin-top:12px;">
-              <a class="btn" href="https://www.goodreads.com/user/show/177005295-franciele-nunes-da-silva" target="_blank" rel="noreferrer noopener">
-                Goodreads →
-              </a>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Movies</h3>
-            <p>My Filmaffinity ratings: the ones that stayed with me.</p>
-            <div style="margin-top:12px;">
-              <a class="btn" href="https://www.filmaffinity.com/us/userratings.php?user_id=7077969" target="_blank" rel="noreferrer noopener">
-                Filmaffinity →
-              </a>
-            </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Reading list</h3>
+          <p>My Goodreads: what I’m reading and what I’ve rated.</p>
+          <div style="margin-top:12px;">
+            <a class="btn" href="https://www.goodreads.com/user/show/177005295-franciele-nunes-da-silva" target="_blank" rel="noreferrer noopener">
+              Goodreads →
+            </a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="floki" class="reveal">
-      <div class="section-inner">
-        <p class="kicker">Floki</p>
-        <h2 class="h2"><span class="grad">My daily reset</span></h2>
-
-        <div class="media-frame" style="margin-top:14px;">
-          <img src="floki-1.png" alt="Floki the dog"/>
-          <div class="img-caption">floki-1.png</div>
+        <div class="card">
+          <h3>Movies</h3>
+          <p>My Filmaffinity ratings: the ones that stayed with me.</p>
+          <div style="margin-top:12px;">
+            <a class="btn" href="https://www.filmaffinity.com/us/userratings.php?user_id=7077969" target="_blank" rel="noreferrer noopener">
+              Filmaffinity →
+            </a>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- FLOKI -->
+    <div class="block reveal" id="floki">
+      <p class="kicker">Floki</p>
+      <h2><span class="grad">My daily reset</span></h2>
+      <p class="lead">
+        Floki is funny, stubborn, and extremely good at pulling me out of my head. He doesn’t care about plans —
+        he cares about walks.
+      </p>
+
+      <div class="media-frame">
+        <img src="floki-1.png" alt="Floki the dog"/>
+        <div class="img-caption">floki-1.png</div>
+      </div>
+    </div>
 
     <footer class="reveal">
-      <div class="footer-inner">
-        <div class="fineprint">
-          © <span id="year"></span> Franciele Nunes Da Silva • franciele.xyz
-        </div>
-        <div class="social">
-          <a href="https://www.linkedin.com/in/franciele-nunesdasilva/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-          <a href="https://x.com/imfloka" target="_blank" rel="noreferrer noopener">X</a>
-          <a href="https://www.instagram.com/iamfrancielenunesdasilva" target="_blank" rel="noreferrer noopener">Instagram</a>
-        </div>
+      <div>© <span id="year"></span> Franciele Nunes Da Silva • franciele.xyz</div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/franciele-nunesdasilva/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+        <a href="https://x.com/imfloka" target="_blank" rel="noreferrer noopener">X</a>
+        <a href="https://www.instagram.com/iamfrancielenunesdasilva" target="_blank" rel="noreferrer noopener">Instagram</a>
       </div>
     </footer>
   </div>
@@ -594,6 +545,7 @@ if it will exist</pre>
     }, { threshold: 0.12 });
     els.forEach(el => io.observe(el));
 
+    // subtle stars
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d", { alpha: true });
     let W, H, stars;
@@ -611,14 +563,14 @@ if it will exist</pre>
     }
     function rand(min, max){ return Math.random() * (max - min) + min; }
     function buildStars(){
-      const count = Math.round((W * H) / 12000);
+      const count = Math.round((W * H) / 15000); // fewer stars for calmer vibe
       stars = new Array(count).fill(0).map(() => ({
         x: rand(0, W), y: rand(0, H),
-        r: rand(0.6, 1.5),
-        a: rand(0.06, 0.26),
-        tw: rand(0.002, 0.007),
+        r: rand(0.6, 1.4),
+        a: rand(0.05, 0.20),
+        tw: rand(0.002, 0.006),
         phase: rand(0, Math.PI * 2),
-        drift: rand(0.018, 0.07)
+        drift: rand(0.016, 0.06)
       }));
     }
     let t = 0;
@@ -627,7 +579,7 @@ if it will exist</pre>
       ctx.clearRect(0, 0, W, H);
       for (const s of stars){
         const twinkle = (Math.sin(t * s.tw + s.phase) + 1) / 2;
-        const alpha = s.a * (0.60 + 0.40 * twinkle);
+        const alpha = s.a * (0.62 + 0.38 * twinkle);
         s.y += s.drift;
         if (s.y > H + 10) { s.y = -10; s.x = rand(0, W); }
         ctx.beginPath();
