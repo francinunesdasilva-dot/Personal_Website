@@ -1,9 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Franciele Nunes Da Silva</title>
@@ -13,13 +10,10 @@
     body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #111; color: #fefefe; }
     .float { animation: float 6s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-
     .gradient-text { background: linear-gradient(270deg, #4ade80, #3b82f6); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientAnimation 15s ease infinite; }
     @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-
     .fade-up { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-
     .glow-hover:hover { box-shadow: 0 0 15px rgba(74, 222, 128, 0.2); transform: scale(1.03); transition: all 0.5s ease; }
     .hover-sound { cursor: pointer; }
     .social-icons a { margin: 0 0.5rem; color: #4ade80; transition: color 0.3s; }
@@ -28,20 +22,13 @@
 </head>
 <body class="selection:bg-blue-200 selection:text-blue-900"> 
 
-  <div class="max-w-6xl mx-auto px-6 py-12">
-    <p class="text-center text-lg text-gray-400">If you see a white screen, it’s likely the background color was changed. Scroll down to see content or check browser zoom.</p>
-  </div>
-
   <!-- Header -->
-  <header class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center relative fade-up glow-hover hover-sound">
   <header class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center fade-up glow-hover hover-sound">
     <div>
       <h1 class="text-4xl md:text-6xl font-light tracking-tight">
         <span class="gradient-text font-light">Franciele</span>
         <span class="gradient-text font-semibold"> Nunes Da Silva</span>
       </h1>
-      <p class="mt-6 text-lg text-gray-200 max-w-2xl">I move through life with curiosity, reflection, and a fascination for both small and profound moments. This space gathers my journey, creativity, and the things that inspire me most.</p>
-      <p class="mt-4 text-gray-200 max-w-2xl">You’ll find stories from my travels, glimpses of my paintings, reflections from my inner world, meditation practices, and moments with my loyal companion, Floki.</p>
       <p class="mt-6 text-lg text-gray-200 max-w-2xl">I navigate life with curiosity, reflection, and a deep appreciation for moments that reveal both beauty and meaning. This space captures my journey, passions, and the inspirations that shape my world.</p>
       <p class="mt-4 text-gray-200 max-w-2xl">Discover my travels, paintings, writings, meditation, and the everyday joys shared with my companion, Floki.</p>
       <div class="mt-6">
@@ -55,23 +42,15 @@
 
   <!-- Who I Am -->
   <section id="Who" class="max-w-6xl mx-auto px-6 py-24 fade-up">
-    <h2 class="text-3xl md:text-5xl font-
-    <p>I grew up in the heart of Minas Gerais, learning resilience, independence, and curiosity from an early age. Life’s journey has taken me across languages, countries, and experiences that have shaped my perspective, my passions, and my love for exploration.</p>
-    <p class="mt-4">I’m drawn to painting, meditation, nature, reading, and traveling. Every day is an opportunity to reflect, create, and be fully present in the world around me.</p>
-semibold gradient-text mb-6">Who I Am</h2>
+    <h2 class="text-3xl md:text-5xl font-semibold gradient-text mb-6">Who I Am</h2>
     <p>I was raised with curiosity and resilience, moving through diverse experiences and cultures that shaped my perspective. My passions lie in painting, meditation, exploring nature, reading, and traveling, all avenues through which I seek creativity, insight, and connection.</p>
-    <p class="mt-4">This space is a reflection of me—my journey, my thoughts, and the beauty I find in b
-    <p>Over the years, I’ve explored <strong>12 countries</strong> and visited <strong>34 US National Parks</strong>. Each journey expands my view, teaches me lessons, and offers stories that continue to inspire my reflections.</p>
-    <p class="mt-4">Travel is more than destinations—it’s the people, experiences, and fleeting moments that shape who we are and how we connect to the world.</p>
-oth the grand and subtle moments of life.</p>
+    <p class="mt-4">This space is a reflection of me—my journey, my thoughts, and the beauty I find in both the grand and subtle moments of life.</p>
   </section>
 
   <!-- Travel -->
   <section id="Travel" class="max-w-6xl mx-auto px-6 py-24 fade-up">
     <h2 class="text-3xl md:text-5xl font-semibold gradient-text mb-6">Travel</h2>
-    <p>I’ve explored <strong>12 countries</strong> and visited <strong>34 US National Parks</strong>. Every journey brings new perspectives, unforgettable encounters, 
-    <p>Through painting, I give form to feelings and moments, capturing glimpses of life through color, texture, and brushstroke.</p>
-and moments that fuel my creativity and reflections.</p>
+    <p>I’ve explored <strong>12 countries</strong> and visited <strong>34 US National Parks</strong>. Every journey brings new perspectives, unforgettable encounters, and moments that fuel my creativity and reflections.</p>
     <p class="mt-4">Travel allows me to connect with the world and with myself, capturing experiences that inform both my art and my inner life.</p>
   </section>
 
@@ -80,8 +59,7 @@ and moments that fuel my creativity and reflections.</p>
     <h2 class="text-3xl md:text-5xl font-semibold gradient-text mb-6">Paintings</h2>
     <p>Painting is how I translate feelings, thoughts, and fleeting moments into color and form. Each piece is a story, a fragment of my inner world expressed on canvas.</p>
     <div class="grid md:grid-cols-3 gap-6 mt-6">
-      <div class="over
-flow-hidden rounded-2xl glow-hover hover-sound h-64"><img src="painting-1.png" alt="Painting 1" class="w-full h-full object-cover"></div>
+      <div class="overflow-hidden rounded-2xl glow-hover hover-sound h-64"><img src="painting-1.png" alt="Painting 1" class="w-full h-full object-cover"></div>
       <div class="overflow-hidden rounded-2xl glow-hover hover-sound h-64"><img src="painting-2.png" alt="Painting 2" class="w-full h-full object-cover"></div>
       <div class="overflow-hidden rounded-2xl glow-hover hover-sound h-64"><img src="painting-3.png" alt="Painting 3" class="w-full h-full object-cover"></div>
     </div>
