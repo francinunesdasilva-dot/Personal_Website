@@ -11,14 +11,13 @@
       --bg: #070913;
       --text: rgba(255,255,255,.86);
       --muted: rgba(255,255,255,.62);
-      --faint: rgba(255,255,255,.45);
 
       --g1: #35d0ff;
       --g2: #22e1a8;
 
       --radius: 22px;
       --radius2: 18px;
-      --shadow: 0 18px 60px rgba(0,0,0,.30);
+      --shadow: 0 18px 60px rgba(0,0,0,.28);
     }
 
     *{ box-sizing: border-box; }
@@ -28,19 +27,19 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
       background:
-        radial-gradient(1200px 820px at 18% -10%, rgba(53,208,255,.12), transparent 56%),
-        radial-gradient(1000px 760px at 95% 8%, rgba(34,225,168,.10), transparent 58%),
-        radial-gradient(900px 900px at 10% 95%, rgba(53,208,255,.06), transparent 55%),
+        radial-gradient(1200px 820px at 18% -10%, rgba(53,208,255,.11), transparent 56%),
+        radial-gradient(1000px 760px at 95% 8%, rgba(34,225,168,.095), transparent 58%),
+        radial-gradient(900px 900px at 10% 95%, rgba(53,208,255,.055), transparent 55%),
         var(--bg);
       overflow-x: hidden;
     }
 
-    /* stars: keep subtle */
+    /* stars: subtle */
     #stars{
       position: fixed;
       inset: 0;
       z-index: -2;
-      opacity: .45;
+      opacity: .42;
       pointer-events: none;
     }
     .vignette{
@@ -67,25 +66,10 @@
       color: transparent;
     }
 
-    /* Fluid layout: no boxed sections */
+    /* Fluid layout: spacing only, no separators */
     .block{
-      margin-top: 34px;
-      position: relative;
+      margin-top: 40px;
     }
-
-    /* soft “breathing” separators (no lines) */
-    .block::before{
-      content:"";
-      position:absolute;
-      left: 0; right: 0;
-      top: -18px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.10), transparent);
-      opacity: .25;
-      filter: blur(.2px);
-      pointer-events:none;
-    }
-    .block:first-of-type::before{ display:none; }
 
     .kicker{
       color: rgba(255,255,255,.52);
@@ -155,7 +139,7 @@
       border-radius: 999px;
       color: rgba(255,255,255,.72);
       font-size: 13px;
-      border: 1px solid rgba(255,255,255,.08); /* very soft */
+      border: 1px solid rgba(255,255,255,.08);
     }
 
     .cta-row{
@@ -193,13 +177,13 @@
         radial-gradient(700px 420px at 30% 20%, rgba(53,208,255,.12), transparent 60%),
         radial-gradient(700px 420px at 80% 70%, rgba(34,225,168,.10), transparent 60%),
         rgba(255,255,255,.02);
-      box-shadow: 0 14px 42px rgba(0,0,0,.26);
+      box-shadow: 0 14px 42px rgba(0,0,0,.22);
     }
     .media-frame img{
       width: 100%;
       height: auto;
-      max-height: 560px;     /* cap */
-      object-fit: contain;   /* never crop */
+      max-height: 560px;
+      object-fit: contain;
       display: block;
       background: transparent;
     }
@@ -208,11 +192,11 @@
       color: rgba(255,255,255,.70);
       font-size: 13.25px;
       line-height: 1.45;
-      background: rgba(0,0,0,.14);
+      background: rgba(0,0,0,.12);
       backdrop-filter: blur(10px);
     }
 
-    /* paintings: 2 columns (since you removed painting-3) */
+    /* paintings: 2 columns */
     .paint-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -231,12 +215,12 @@
     }
     @media (max-width: 820px){ .grid-2{ grid-template-columns: 1fr; } }
 
-    /* cards: remove harsh borders, keep subtle */
+    /* cards: subtle */
     .card{
       border-radius: var(--radius2);
       padding: 14px;
-      background: rgba(255,255,255,.025);
-      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+      background: rgba(255,255,255,.022);
+      box-shadow: 0 10px 26px rgba(0,0,0,.16);
     }
     .card h3{
       margin: 0 0 6px;
@@ -255,8 +239,8 @@
       margin-top: 14px;
       border-radius: var(--radius2);
       padding: 16px 16px 14px;
-      background: rgba(255,255,255,.025);
-      box-shadow: 0 10px 28px rgba(0,0,0,.18);
+      background: rgba(255,255,255,.022);
+      box-shadow: 0 10px 26px rgba(0,0,0,.16);
     }
     .writing h3{
       margin: 0 0 10px;
@@ -273,8 +257,8 @@
     }
 
     footer{
-      margin-top: 40px;
-      padding-top: 14px;
+      margin-top: 46px;
+      padding-top: 12px;
       color: rgba(255,255,255,.50);
       font-size: 12.5px;
       display:flex;
@@ -282,16 +266,6 @@
       align-items:center;
       gap: 12px;
       flex-wrap: wrap;
-      position: relative;
-    }
-    footer::before{
-      content:"";
-      position:absolute;
-      left:0; right:0;
-      top:0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
-      opacity: .35;
     }
     .social{
       display:flex;
@@ -301,7 +275,7 @@
     .social a{
       padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.025);
+      background: rgba(255,255,255,.022);
       border: 1px solid rgba(255,255,255,.08);
       color: rgba(255,255,255,.75);
       transition: transform .18s ease, background .18s ease, border-color .18s ease;
@@ -563,7 +537,7 @@ if it will exist</pre>
     }
     function rand(min, max){ return Math.random() * (max - min) + min; }
     function buildStars(){
-      const count = Math.round((W * H) / 15000); // fewer stars for calmer vibe
+      const count = Math.round((W * H) / 15000);
       stars = new Array(count).fill(0).map(() => ({
         x: rand(0, W), y: rand(0, H),
         r: rand(0.6, 1.4),
