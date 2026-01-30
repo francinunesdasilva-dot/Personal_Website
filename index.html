@@ -34,6 +34,24 @@
       overflow-x: hidden;
     }
 
+    #stars{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: .42;
+      pointer-events: none;
+    }
+    .vignette{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(1200px 900px at 50% 25%, transparent 62%, rgba(0,0,0,.58) 100%);
+    }
+
+    a{ color: rgba(255,255,255,.86); text-decoration: none; }
+    a:hover{ color: white; }
+
     .wrap{
       width: min(980px, calc(100% - 44px));
       margin: 0 auto;
@@ -49,6 +67,14 @@
 
     .block{ margin-top: 44px; }
 
+    .kicker{
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin: 0 0 10px;
+    }
+
     h1{
       margin: 0;
       font-size: clamp(36px, 4.8vw, 58px);
@@ -56,12 +82,25 @@
       line-height: 1.02;
     }
 
-    h2{
-      margin: 0 0 12px;
-      font-size: 28px;
-      letter-spacing: -0.01em;
-      line-height: 1.15;
+    .hero{
+      margin-top: 10px;
+      border-radius: var(--radius);
+      background:
+        radial-gradient(800px 420px at 25% 10%, rgba(53,208,255,.12), transparent 60%),
+        radial-gradient(800px 420px at 85% 70%, rgba(34,225,168,.10), transparent 60%),
+        rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding: 24px;
     }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items:center;
+    }
+    @media (max-width: 860px){ .hero-grid{ grid-template-columns: 1fr; } }
 
     .intro{
       margin-top: 26px;
@@ -69,6 +108,33 @@
       font-size: 16px;
       line-height: 1.75;
       max-width: 70ch;
+    }
+
+    .media-frame{
+      margin-top: 14px;
+      border-radius: var(--radius2);
+      overflow: hidden;
+      background:
+        radial-gradient(700px 420px at 30% 20%, rgba(53,208,255,.12), transparent 60%),
+        radial-gradient(700px 420px at 80% 70%, rgba(34,225,168,.10), transparent 60%),
+        rgba(255,255,255,.02);
+      box-shadow: 0 14px 42px rgba(0,0,0,.22);
+    }
+    .media-frame img{
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      display: block;
+      background: transparent;
+    }
+    .img-caption{ display:none; }
+
+    h2{
+      margin: 0 0 12px;
+      font-size: 28px;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
     }
 
     .lead{
@@ -79,19 +145,113 @@
       max-width: 78ch;
     }
 
-    .media-frame{
+    /* Paintings: 3 columns on desktop, 2 on tablet, 1 on mobile */
+    .paint-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
       margin-top: 14px;
-      border-radius: var(--radius2);
-      overflow: hidden;
-      background: rgba(255,255,255,.02);
-      box-shadow: 0 14px 42px rgba(0,0,0,.22);
     }
-    .media-frame img{
+    @media (max-width: 980px){
+      .paint-grid{ grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px){
+      .paint-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Chosen height: 520px (best balance) */
+    .paint-grid .media-frame{
+      margin-top: 0;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+    .paint-grid .media-frame img{
+      max-height: 100%;
       width: 100%;
-      height: auto;
-      max-height: 560px;
       object-fit: contain;
-      display: block;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 820px){ .grid-2{ grid-template-columns: 1fr; } }
+
+    .card{
+      border-radius: var(--radius2);
+      padding: 16px;
+      background: rgba(255,255,255,.022);
+      box-shadow: 0 10px 26px rgba(0,0,0,.16);
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      color: rgba(255,255,255,.90);
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15.75px;
+    }
+    .card .btn-row{
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.84);
+      font-size: 13.5px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      user-select:none;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.045);
+      color: white;
+    }
+
+    .writing-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+      align-items: start;
+    }
+    @media (max-width: 980px){
+      .writing-grid{ grid-template-columns: 1fr; }
+    }
+
+    .writing{
+      border-radius: var(--radius2);
+      padding: 18px 18px 16px;
+      background: rgba(255,255,255,.022);
+      box-shadow: 0 10px 26px rgba(0,0,0,.16);
+    }
+    .writing h3{
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: rgba(255,255,255,.92);
+    }
+    .writing pre{
+      margin: 0;
+      white-space: pre-wrap;
+      color: rgba(255,255,255,.76);
+      line-height: 1.8;
+      font-size: 15.5px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
 
     footer{
@@ -101,54 +261,315 @@
       font-size: 12.5px;
       display:flex;
       justify-content: space-between;
+      align-items:center;
       gap: 12px;
       flex-wrap: wrap;
     }
-    footer a{
+    .social{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .social a{
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.022);
+      border: 1px solid rgba(255,255,255,.08);
       color: rgba(255,255,255,.75);
-      text-decoration: none;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .social a:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.04);
+      border-color: rgba(255,255,255,.16);
+      color: white;
+    }
+
+    .reveal{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .reveal.in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .reveal, .reveal.in, .btn, .social a{
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
-<div class="wrap">
+  <canvas id="stars"></canvas>
+  <div class="vignette"></div>
 
-  <!-- HERO -->
-  <section class="block">
-    <h1><span class="grad">Franciele Nunes Da Silva</span></h1>
-    <p class="intro">
-      I have lived a few very different lives in one. I am drawn to hard work and clean simplicity and also to depth,
-      wonder, and the kind of learning that changes you. I navigate life with curiosity, reflection, and a deep
-      appreciation for moments that reveal meaning. This space captures my journey, passions, and the inspirations
-      that shape my world.
-    </p>
-    <div class="media-frame">
-      <img src="profile.png" alt="Portrait of Franciele"/>
+  <div class="wrap">
+    <!-- HERO -->
+    <div class="hero reveal" id="top">
+      <div class="hero-grid">
+        <div>
+          <h1><span class="grad">Franciele Nunes Da Silva</span></h1>
+
+          <p class="intro">
+            I have lived a few very different lives in one. I am drawn to hard work and clean simplicity and also to depth,
+            wonder, and the kind of learning that changes you. I navigate life with curiosity, reflection, and a deep
+            appreciation for moments that reveal meaning. This space captures my journey, passions, and the inspirations
+            that shape my world.
+          </p>
+        </div>
+
+        <div>
+          <div class="media-frame" style="margin-top:0;">
+            <img src="profile.png" alt="Portrait of Franciele"/>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- FLOKI -->
-  <section class="block" id="floki">
-    <h2><span class="grad">Floki</span></h2>
-    <p class="lead">
-      Floki is my constant companion and a source of joy in my life. He reminds me to slow down, enjoy the little moments,
-      and approach each day with playfulness. He loves walks, but more importantly, he is a big fan of car rides.
-    </p>
-    <div class="media-frame">
-      <img src="floki-1.png" alt="Floki the dog"/>
+    <!-- WHO -->
+    <div class="block reveal" id="who">
+      <p class="kicker">Who I am</p>
+      <h2><span class="grad">A life built in chapters</span></h2>
+      <p class="lead">
+        I grew up in Minas Gerais, Brazil, on a farm where life was simple, grounded, and closely connected to nature. Surrounded by fresh food,
+        animals, and open land, I had experiences that many people never do, and I learned early lessons about hard work, community, and responsibility.
+        As I became more aware of the financial challenges of that life, I knew I wanted to build a different future for myself. At thirteen, I left the
+        farm, began working full time, and continued school part time, learning independence earlier than most. After high school, I earned a full scholarship
+        to study architecture but eventually realized my path lay elsewhere. In 2017, I moved to the United States, starting fresh with no English and little
+        certainty. I shifted my focus to business to better understand how ideas turn into real ventures and to prepare for an entrepreneurial life. After college,
+        I gained experience on Wall Street, which broadened my perspective on business and strategy. Throughout all these experiences, one principle has remained constant:
+        stay curious, ask questions, and give your full care to whatever you choose to build.
+      </p>
     </div>
-  </section>
 
-  <footer>
-    <div>© Franciele Nunes Da Silva • franciele.xyz</div>
-    <div>
-      <a href="https://www.linkedin.com/in/franciele-nunesdasilva/">LinkedIn</a> ·
-      <a href="https://x.com/imfloka">X</a> ·
-      <a href="https://www.instagram.com/iamfrancielenunesdasilva/">Instagram</a>
+    <!-- TRAVEL -->
+    <div class="block reveal" id="travel">
+      <p class="kicker">Travel</p>
+      <h2><span class="grad">The outer world</span></h2>
+      <p class="lead">
+        I travel for perspective and to come back with a calmer mind. Every journey brings new perspectives, unforgettable encounters, and moments that feed creativity
+        and reflection. Travel helps me connect with the world and with myself, and the experiences I collect become fuel for both my professional and personal life.
+        I have visited only 12 countries, but I have spent a lot of time in the US national parks and I have visited 34 of them.
+      </p>
+
+      <div class="media-frame">
+        <img src="hiking.png" alt="Hiking photo"/>
+      </div>
     </div>
-  </footer>
 
-</div>
+    <!-- PAINTINGS -->
+    <div class="block reveal" id="paintings">
+      <p class="kicker">Paintings</p>
+      <h2><span class="grad">Where words stop</span></h2>
+      <p class="lead">
+        I started painting at a young age, paused for a very long time, and just recently resumed making a few pieces again.
+        Painting is how I translate feelings, thoughts, and fleeting moments into color and form. Each piece is a story,
+        a fragment of my inner world expressed on canvas.
+      </p>
+
+      <div class="paint-grid">
+        <div class="media-frame">
+          <img src="painting-1.png" alt="Painting 1"/>
+        </div>
+        <div class="media-frame">
+          <img src="painting-2.png" alt="Painting 2"/>
+        </div>
+        <div class="media-frame">
+          <img src="crossmint.png" alt="Painting 3"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- REFLECTIONS -->
+    <div class="block reveal" id="reflections">
+      <p class="kicker">Reflections</p>
+      <h2><span class="grad">Notes to myself</span></h2>
+      <p class="lead">
+        I like to do creative writing. Nothing structured, no agenda, just free flow of thoughts.
+      </p>
+
+      <div class="writing-grid">
+        <div class="writing">
+          <h3>While Everything Moves</h3>
+          <pre>Everything passes.
+Look up at the sky and notice how the clouds keep moving…
+After just a few seconds of watching them, they are no longer in the same place.
+
+And inside—what is there?
+Amid so many uncertainties, emptiness, and loneliness, everything is still in motion.
+We may not yet know why, but movement is necessary.
+Life is movement.
+
+No matter how misaligned things may seem, they are, in truth, connected on an invisible plane.
+Even if we don’t understand how, this movement was planned and is part of a greater journey;
+a journey we are walking at every moment.
+
+We don’t know where we are going, yet we continue forward, carried by movement itself.
+What shapes our experience along the way are the choices we make.
+
+The secret of life, then, lies in choosing what is right—
+what makes sense—while we are in motion.</pre>
+        </div>
+
+        <div class="writing">
+          <h3>Tomorrow</h3>
+          <pre>I am running because I have a place to be 
+A place that is magical and sweet
+Where pain shall not exist
+But colorful balloons, dance, and light
+
+I am rushing to get to this place
+As I need to live in it
+If there is something so beautiful
+How could one live a different life otherwise?
+
+But there is a cost to get to this place
+A price that few are willing to pay
+And that is for not living in the present
+And perhaps in constant pain
+
+The place I long for is called tomorrow.
+I will keep on chasing tomorrow
+Even though I don't know
+if it will exist</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEDITATION -->
+    <div class="block reveal" id="meditation">
+      <p class="kicker">Meditation</p>
+      <h2><span class="grad">Stillness</span></h2>
+      <p class="lead">
+        Meditation is training and a harder one. In today&#39;s world it is very challenging to sit quietly for a longer period of time
+        and take the time to examine what is going on inside. In 2025, I completed an intensive 8-day silent retreat at a remote
+        monastery. Stripping away the noise of digital life and conversation revealed a profound layer of clarity and resilience.
+        It was a transformative period of sitting with one&#39;s thoughts, observing the nature of the mind without judgment, and
+        finding a deep, quiet strength that I carry back into my day to day.
+      </p>
+
+      <div class="media-frame">
+        <img src="monastery.png" alt="Monastery where Franciele did an 8-day silent retreat"/>
+      </div>
+    </div>
+
+    <!-- MEDIA -->
+    <div class="block reveal" id="media">
+      <p class="kicker">Readings & movies</p>
+      <h2><span class="grad">What I am into</span></h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Readings</h3>
+          <p>
+            I am very selective when it comes to books. Although I have not read a lot of books, the ones I have read are a very good selection.
+            I like to read about psychology, philosophy, science, and biographies. Sometimes a good novel makes its way to my list too.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href="https://www.goodreads.com/user/show/177005295-franciele-nunes-da-silva" target="_blank" rel="noreferrer noopener">
+              Goodreads →
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Movies</h3>
+          <p>
+            I started tracking the movies I watch in 2024, even though I have watched far more than what appears on my list.
+            I love going to the movie theater and watching movies hot the press. All genres are welcome except for the really terrifying horror ones.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href="https://www.filmaffinity.com/us/userratings.php?user_id=7077969" target="_blank" rel="noreferrer noopener">
+              Filmaffinity →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLOKI -->
+    <div class="block reveal" id="floki">
+      <p class="kicker">Floki</p>
+      <h2><span class="grad">My daily reset</span></h2>
+      <p class="lead">
+        Floki is my constant companion and a source of joy in my life. He reminds me to slow down, enjoy the little moments, and approach each day with playfulness. He loves walks, but more importantly, he is a big fan of car rides.
+      </p>
+
+      <div class="media-frame">
+        <img src="floki-1.png" alt="Floki the dog"/>
+      </div>
+    </div>
+
+    <footer class="reveal">
+      <div>© <span id="year"></span> Franciele Nunes Da Silva • franciele.xyz</div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/franciele-nunesdasilva/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+        <a href="https://x.com/imfloka" target="_blank" rel="noreferrer noopener">X</a>
+        <a href="https://www.instagram.com/iamfrancielenunesdasilva/" target="_blank" rel="noreferrer noopener">Instagram</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const els = Array.from(document.querySelectorAll(".reveal"));
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) e.target.classList.add("in");
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d", { alpha: true });
+    let W, H, stars;
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resize(){
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = Math.floor(W * DPR);
+      canvas.height = Math.floor(H * DPR);
+      canvas.style.width = W + "px";
+      canvas.style.height = H + "px";
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      buildStars();
+    }
+    function rand(min, max){ return Math.random() * (max - min) + min; }
+    function buildStars(){
+      const count = Math.round((W * H) / 15000);
+      stars = new Array(count).fill(0).map(() => ({
+        x: rand(0, W), y: rand(0, H),
+        r: rand(0.6, 1.4),
+        a: rand(0.05, 0.20),
+        tw: rand(0.002, 0.006),
+        phase: rand(0, Math.PI * 2),
+        drift: rand(0.016, 0.06)
+      }));
+    }
+    let t = 0;
+    function draw(){
+      t += 1;
+      ctx.clearRect(0, 0, W, H);
+      for (const s of stars){
+        const twinkle = (Math.sin(t * s.tw + s.phase) + 1) / 2;
+        const alpha = s.a * (0.62 + 0.38 * twinkle);
+        s.y += s.drift;
+        if (s.y > H + 10) { s.y = -10; s.x = rand(0, W); }
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener("resize", resize, { passive: true });
+    resize();
+    draw();
+  </script>
 </body>
 </html>
