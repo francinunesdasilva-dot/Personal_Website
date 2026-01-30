@@ -128,7 +128,6 @@
       display: block;
       background: transparent;
     }
-
     .img-caption{ display:none; }
 
     h2{
@@ -159,8 +158,21 @@
     @media (max-width: 620px){
       .paint-grid{ grid-template-columns: 1fr; }
     }
-    .paint-grid .media-frame{ margin-top: 0; }
-    .paint-grid .media-frame img{ max-height: 520px; }
+
+    /* Chosen height: 520px (best balance) */
+    .paint-grid .media-frame{
+      margin-top: 0;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+    .paint-grid .media-frame img{
+      max-height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
 
     .grid-2{
       display:grid;
@@ -323,8 +335,14 @@
       <p class="kicker">Who I am</p>
       <h2><span class="grad">A life built in chapters</span></h2>
       <p class="lead">
-        I grew up on a farm in the interior of Minas Gerais, Brazil. I left home young, worked early, changed paths,
-        and built a life in the U.S.
+        I grew up in Minas Gerais, Brazil, on a farm where life was simple, grounded, and closely connected to nature. Surrounded by fresh food,
+        animals, and open land, I had experiences that many people never do, and I learned early lessons about hard work, community, and responsibility.
+        As I became more aware of the financial challenges of that life, I knew I wanted to build a different future for myself. At thirteen, I left the
+        farm, began working full time, and continued school part time, learning independence earlier than most. After high school, I earned a full scholarship
+        to study architecture but eventually realized my path lay elsewhere. In 2017, I moved to the United States, starting fresh with no English and little
+        certainty. I shifted my focus to business to better understand how ideas turn into real ventures and to prepare for an entrepreneurial life. After college,
+        I gained experience on Wall Street, which broadened my perspective on business and strategy. Throughout all these experiences, one principle has remained constant:
+        stay curious, ask questions, and give your full care to whatever you choose to build.
       </p>
     </div>
 
@@ -333,10 +351,9 @@
       <p class="kicker">Travel</p>
       <h2><span class="grad">The outer world</span></h2>
       <p class="lead">
-        I travel for perspective and to come back with a calmer mind. Every journey brings new perspectives, unforgettable
-        encounters, and moments that fuel creativity and reflection. Travel helps me connect with the world and with myself,
-        and the experiences I collect become energy for both my professional and personal life. I have visited only 12 countries,
-        but I have spent a lot of time in the US national parks and I have visited 34 of them.
+        I travel for perspective and to come back with a calmer mind. Every journey brings new perspectives, unforgettable encounters, and moments that feed creativity
+        and reflection. Travel helps me connect with the world and with myself, and the experiences I collect become fuel for both my professional and personal life.
+        I have visited only 12 countries, but I have spent a lot of time in the US national parks and I have visited 34 of them.
       </p>
 
       <div class="media-frame">
