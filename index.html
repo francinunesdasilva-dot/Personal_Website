@@ -36,7 +36,7 @@
     .wrap{
       width: min(980px, calc(100% - 44px));
       margin: 0 auto;
-      padding: 40px 0 90px;
+      padding: 40px 0 100px;
     }
 
     .grad{
@@ -46,22 +46,18 @@
       color: transparent;
     }
 
-    /* ===== TYPOGRAPHY & SPACING ===== */
-
     h1{
       margin: 0;
       font-size: clamp(36px, 4.8vw, 58px);
       letter-spacing: -0.02em;
       line-height: 1.02;
-      text-align: left;
     }
 
     h2{
-      margin: 0 0 14px;
+      margin: 0 0 16px;
       font-size: 28px;
       letter-spacing: -0.01em;
       line-height: 1.15;
-      text-align: left;
     }
 
     .kicker{
@@ -69,31 +65,27 @@
       font-size: 14px;
       letter-spacing: .14em;
       text-transform: uppercase;
-      margin: 0 0 10px;
-      text-align: left;
+      margin-bottom: 10px;
     }
 
     .intro,
     .lead{
-      color: var(--muted);
       font-size: 16px;
       line-height: 1.85;
+      color: var(--muted);
       max-width: 74ch;
       margin-left: auto;
       margin-right: auto;
       text-align: left;
     }
 
-    /* Extra space below the name */
     .intro{
       margin-top: 56px;
     }
 
     .block{
-      margin-top: 72px;
+      margin-top: 80px;
     }
-
-    /* ===== HERO ===== */
 
     .hero{
       border-radius: var(--radius);
@@ -102,7 +94,7 @@
         radial-gradient(800px 420px at 85% 70%, rgba(34,225,168,.10), transparent 60%),
         rgba(255,255,255,.03);
       box-shadow: var(--shadow);
-      padding: 32px;
+      padding: 36px;
     }
 
     .hero-grid{
@@ -116,17 +108,14 @@
       .hero-grid{ grid-template-columns: 1fr; }
     }
 
-    /* Center hero text column */
     .hero-grid > div:first-child{
       max-width: 74ch;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* ===== MEDIA ===== */
-
     .media-frame{
-      margin-top: 18px;
+      margin-top: 20px;
       border-radius: var(--radius2);
       overflow: hidden;
       background: rgba(255,255,255,.02);
@@ -140,13 +129,11 @@
       display: block;
     }
 
-    /* ===== PAINTINGS ===== */
-
     .paint-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 22px;
+      gap: 16px;
+      margin-top: 24px;
     }
 
     @media (max-width: 980px){
@@ -165,13 +152,11 @@
       padding: 14px;
     }
 
-    /* ===== REFLECTIONS ===== */
-
     .writing-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 24px;
+      gap: 24px;
+      margin-top: 32px;
       max-width: 74ch;
       margin-left: auto;
       margin-right: auto;
@@ -182,14 +167,15 @@
     }
 
     .writing{
-      padding: 18px;
+      padding: 20px;
       background: rgba(255,255,255,.022);
       border-radius: var(--radius2);
       box-shadow: 0 10px 26px rgba(0,0,0,.16);
     }
 
     .writing h3{
-      margin: 0 0 12px;
+      margin-top: 0;
+      margin-bottom: 12px;
       font-size: 18px;
     }
 
@@ -202,14 +188,30 @@
       margin: 0;
     }
 
-    /* ===== FOOTER ===== */
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 900px){
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      padding: 20px;
+      background: rgba(255,255,255,.022);
+      border-radius: var(--radius2);
+      box-shadow: 0 10px 26px rgba(0,0,0,.16);
+    }
 
     footer{
-      margin-top: 80px;
+      margin-top: 96px;
       display:flex;
       justify-content: space-between;
       align-items:center;
-      gap: 14px;
+      gap: 16px;
       flex-wrap: wrap;
       font-size: 13px;
       color: rgba(255,255,255,.55);
@@ -221,18 +223,13 @@
     }
 
     .social a{
-      padding: 12px 16px;
+      padding: 12px 18px;
       border-radius: 999px;
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.22);
-      font-weight: 600;
       color: rgba(255,255,255,.9);
-      transition: transform .18s ease, background .18s ease;
-    }
-
-    .social a:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.1);
+      font-weight: 600;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -258,11 +255,162 @@
     </div>
   </section>
 
-  <!-- You can keep the rest of your sections exactly as before -->
-  <!-- WHO / TRAVEL / PAINTINGS / REFLECTIONS / MEDITATION / MEDIA / FLOKI -->
+  <!-- WHO I AM -->
+  <section class="block">
+    <p class="kicker">Who I am</p>
+    <h2><span class="grad">A life built in chapters</span></h2>
+    <p class="lead">
+      I grew up in Minas Gerais, Brazil, on a farm where life was simple, grounded, and closely connected to nature.
+      Surrounded by fresh food, animals, and open land, I had experiences that many people never do, and I learned early
+      lessons about hard work, community, and responsibility. As I became more aware of the financial challenges of that
+      life, I knew I wanted to build a different future for myself. At thirteen, I left the farm, began working full time,
+      and continued school part time, learning independence earlier than most. After high school, I earned a full
+      scholarship to study architecture but eventually realized my path lay elsewhere. In 2017, I moved to the United
+      States, starting fresh with no English and little certainty. I shifted my focus to business to better understand how
+      ideas turn into real ventures and to prepare for an entrepreneurial life. After college, I gained experience on Wall
+      Street, which broadened my perspective on business and strategy. Throughout all these experiences, one principle has
+      remained constant: stay curious, ask questions, and give your full care to whatever you choose to build.
+    </p>
+  </section>
+
+  <!-- TRAVEL -->
+  <section class="block">
+    <p class="kicker">Travel</p>
+    <h2><span class="grad">The outer world</span></h2>
+    <p class="lead">
+      I travel for perspective and to come back with a calmer mind. Every journey brings new perspectives, unforgettable
+      encounters, and moments that feed creativity and reflection. Travel helps me connect with the world and with myself,
+      and the experiences I collect become fuel for both my professional and personal life. I have visited only 12
+      countries, but I have spent a lot of time in the US national parks and I have visited 34 of them.
+    </p>
+    <div class="media-frame"><img src="hiking.png"></div>
+  </section>
+
+  <!-- PAINTINGS -->
+  <section class="block">
+    <p class="kicker">Paintings</p>
+    <h2><span class="grad">Where words stop</span></h2>
+    <p class="lead">
+      I started painting at a young age, paused for a very long time, and just recently resumed making a few pieces again.
+      Painting is how I translate feelings, thoughts, and fleeting moments into color and form. Each piece is a story, a
+      fragment of my inner world expressed on canvas.
+    </p>
+    <div class="paint-grid">
+      <div class="media-frame"><img src="painting-1.png"></div>
+      <div class="media-frame"><img src="painting-2.png"></div>
+      <div class="media-frame"><img src="crossmint.png"></div>
+    </div>
+  </section>
+
+  <!-- REFLECTIONS -->
+  <section class="block">
+    <p class="kicker">Reflections</p>
+    <h2><span class="grad">Notes to myself</span></h2>
+    <p class="lead">
+      I like to do creative writing. Nothing structured, no agenda, just free flow of thoughts.
+    </p>
+    <div class="writing-grid">
+      <div class="writing">
+        <h3>While Everything Moves</h3>
+        <pre>Everything passes.
+Look up at the sky and notice how the clouds keep moving…
+After just a few seconds of watching them, they are no longer in the same place.
+
+And inside, what is there?
+Amid so many uncertainties, emptiness, and loneliness, everything is still in motion.
+We may not yet know why, but movement is necessary.
+Life is movement.
+
+No matter how misaligned things may seem, they are, in truth, connected on an invisible plane.
+Even if we don’t understand how, this movement was planned and is part of a greater journey;
+a journey we are walking at every moment.
+
+We don’t know where we are going, yet we continue forward, carried by movement itself.
+What shapes our experience along the way are the choices we make.
+
+The secret of life, then, lies in choosing what is right,
+what makes sense, while we are in motion.</pre>
+      </div>
+
+      <div class="writing">
+        <h3>Tomorrow</h3>
+        <pre>I am running because I have a place to be 
+A place that is magical and sweet
+Where pain shall not exist
+But colorful balloons, dance, and light
+
+I am rushing to get to this place
+As I need to live in it
+If there is something so beautiful
+How could one live a different life otherwise?
+
+But there is a cost to get to this place
+A price that few are willing to pay
+And that is for not living in the present
+And perhaps in constant pain
+
+The place I long for is called tomorrow.
+I will keep on chasing tomorrow
+Even though I don't know
+if it will exist</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDITATION -->
+  <section class="block">
+    <p class="kicker">Meditation</p>
+    <h2><span class="grad">Stillness</span></h2>
+    <p class="lead">
+      Meditation entered my life through curiosity, as a way to turn inward and listen more closely to myself rather than
+      the noise of the outside world. My practice is intuitive, centered on the breath and the simple act of observing
+      thoughts as they arise and pass. While short practices were helpful, it was not until an 8-day silent retreat in a
+      remote monastery that I experienced the deeper impact of meditation. Spending about 18 hours a day in silence and
+      stillness allowed me to reconnect with my inner world in a way I had not before. The experience was deeply
+      transformative, helping me connect more with myself, my intuition, and a sense of who I truly am. Since then,
+      meditation has become a steady source of clarity and peace, keeping me grounded, present, and aligned amid the chaos
+      of life.
+    </p>
+    <div class="media-frame"><img src="monastery.png"></div>
+  </section>
+
+  <!-- READINGS & MOVIES -->
+  <section class="block">
+    <p class="kicker">Readings & movies</p>
+    <h2><span class="grad">What I am into</span></h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Readings</h3>
+        <p>
+          I am very selective when it comes to books. Although I have not read a lot of books, the ones I have read are a
+          very good selection. I like to read about psychology, philosophy, science, and biographies. Sometimes a good
+          novel makes its way to my list too.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Movies</h3>
+        <p>
+          I started tracking the movies I watch in 2024, even though I have watched far more than what appears on my
+          list. I love going to the movie theater and watching movies hot the press. All genres are welcome except for
+          the really terrifying horror ones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOKI -->
+  <section class="block">
+    <p class="kicker">Floki</p>
+    <h2><span class="grad">My daily reset</span></h2>
+    <p class="lead">
+      Floki is my constant companion and a source of joy in my life. He reminds me to slow down, enjoy the little moments,
+      and approach each day with playfulness. He loves walks, but more importantly, he is a big fan of car rides.
+    </p>
+    <div class="media-frame"><img src="floki-1.png"></div>
+  </section>
 
   <footer>
-    <div>© Franciele Nunes Da Silva • franciele.xyz</div>
+    <div>© Franciele Nunes Da Silva · franciele.xyz</div>
     <div class="social">
       <a href="https://www.linkedin.com/in/franciele-nunesdasilva/">LinkedIn</a>
       <a href="https://x.com/imfloka">X</a>
