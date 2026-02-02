@@ -35,6 +35,21 @@
       overflow-x: hidden;
     }
 
+    #stars{
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: .42;
+      pointer-events: none;
+    }
+    .vignette{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(1200px 900px at 50% 25%, transparent 62%, rgba(0,0,0,.58) 100%);
+    }
+
     a{ color: rgba(255,255,255,.86); text-decoration: none; }
     a:hover{ color: white; }
 
@@ -51,12 +66,13 @@
       color: transparent;
     }
 
+    /* OPTION 1: responsive single-line name that always fits */
     .name{
       margin: 0;
       font-size: clamp(30px, 5vw, 56px);
       line-height: 1.05;
       letter-spacing: -0.02em;
-      white-space: nowrap;
+      white-space: nowrap; /* never wrap */
     }
 
     h2{
@@ -85,8 +101,13 @@
       text-align: left;
     }
 
-    .intro{ margin-top: 56px; }
-    .block{ margin-top: 80px; }
+    .intro{
+      margin-top: 56px;
+    }
+
+    .block{
+      margin-top: 80px;
+    }
 
     .hero{
       border-radius: var(--radius);
@@ -107,7 +128,7 @@
 
     @media (max-width: 860px){
       .hero-grid{ grid-template-columns: 1fr; }
-      .name{ white-space: normal; }
+      .name{ white-space: normal; } /* allow wrap on very small screens */
     }
 
     .hero-grid > div:first-child{
@@ -129,7 +150,9 @@
       max-height: 560px;
       object-fit: contain;
       display: block;
+      background: transparent;
     }
+    .img-caption{ display:none; }
 
     .paint-grid{
       display:grid;
@@ -162,6 +185,7 @@
       max-width: 74ch;
       margin-left: auto;
       margin-right: auto;
+      align-items: start;
     }
 
     @media (max-width: 980px){
@@ -179,6 +203,7 @@
       margin-top: 0;
       margin-bottom: 12px;
       font-size: 18px;
+      color: rgba(255,255,255,.92);
     }
 
     .writing pre{
@@ -212,6 +237,7 @@
       margin-top: 0;
       margin-bottom: 10px;
       font-size: 18px;
+      color: rgba(255,255,255,.90);
     }
 
     .card p{
@@ -221,7 +247,7 @@
       font-size: 15.75px;
     }
 
-    /* BUTTONS FOR READINGS & MOVIES */
+    /* ADDED: Buttons for Goodreads + Filmaffinity (mobile friendly) */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -233,11 +259,16 @@
       border: 1px solid rgba(255,255,255,.22);
       color: rgba(255,255,255,.9);
       font-weight: 600;
-      font-size: 14px;
       text-decoration: none;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
       width: fit-content;
     }
-
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.30);
+      color: white;
+    }
     @media (max-width: 900px){
       .btn{ width: 100%; }
     }
@@ -267,11 +298,22 @@
       color: rgba(255,255,255,.9);
       font-weight: 600;
       text-decoration: none;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+
+    .social a:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.30);
+      color: white;
     }
   </style>
 </head>
 
 <body>
+  <canvas id="stars"></canvas>
+  <div class="vignette"></div>
+
   <div class="wrap">
 
     <!-- HERO -->
@@ -279,6 +321,7 @@
       <div class="hero-grid">
         <div>
           <h1 class="name"><span class="grad">Franciele Nunes Da Silva</span></h1>
+
           <p class="intro">
             I have lived a few very different lives in one. I am drawn to hard work and clean simplicity and also to depth,
             wonder, and the kind of learning that changes you. I navigate life with curiosity, reflection, and a deep
@@ -286,7 +329,132 @@
             that shape my world.
           </p>
         </div>
-        <div class="media-frame"><img src="profile.png"></div>
+
+        <div class="media-frame">
+          <img src="profile.png" alt="Portrait of Franciele">
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO I AM -->
+    <section class="block" id="who">
+      <p class="kicker">Who I am</p>
+      <h2><span class="grad">A life built in chapters</span></h2>
+      <p class="lead">
+        I grew up in Minas Gerais, Brazil, on a farm where life was simple, grounded, and closely connected to nature. Surrounded by fresh food,
+        animals, and open land, I had experiences that many people never do, and I learned early lessons about hard work, community, and responsibility.
+        As I became more aware of the financial challenges of that life, I knew I wanted to build a different future for myself. At 13, I left the
+        farm, began working full time, and continued school part time, learning independence earlier than most. After high school, I earned a full scholarship
+        to study architecture but eventually realized my path lay elsewhere. In 2017, I moved to the United States, starting fresh with no English and little
+        certainty. I shifted my focus to business to better understand how ideas turn into real ventures and to prepare for an entrepreneurial life. After college,
+        I gained experience on Wall Street, which broadened my perspective on business and strategy. Throughout all these experiences, one principle has remained constant:
+        stay curious, ask questions, and give your full care to whatever you choose to build.
+      </p>
+    </section>
+
+    <!-- TRAVEL -->
+    <section class="block" id="travel">
+      <p class="kicker">Travel</p>
+      <h2><span class="grad">The outer world</span></h2>
+      <p class="lead">
+        I travel for perspective and to come back with a calmer mind. Every journey brings new perspectives, unforgettable encounters, and moments that feed creativity
+        and reflection. Travel helps me connect with the world and with myself, and the experiences I collect become fuel for both my professional and personal life.
+        I have visited only 12 countries, but I have spent a lot of time in the U.S. national parks and I have visited 34 of them.
+      </p>
+
+      <div class="media-frame">
+        <img src="hiking.png" alt="Hiking photo">
+      </div>
+    </section>
+
+    <!-- PAINTINGS -->
+    <section class="block" id="paintings">
+      <p class="kicker">Paintings</p>
+      <h2><span class="grad">Where words stop</span></h2>
+      <p class="lead">
+        I started painting at a young age, paused for a very long time, and just recently resumed making a few pieces again.
+        Painting is how I translate feelings, thoughts, and fleeting moments into color and form. Each piece is a story,
+        a fragment of my inner world expressed on canvas.
+      </p>
+
+      <div class="paint-grid">
+        <div class="media-frame"><img src="painting-1.png" alt="Painting 1"></div>
+        <div class="media-frame"><img src="painting-2.png" alt="Painting 2"></div>
+        <div class="media-frame"><img src="crossmint.png" alt="Painting 3"></div>
+      </div>
+    </section>
+
+    <!-- REFLECTIONS -->
+    <section class="block" id="reflections">
+      <p class="kicker">Reflections</p>
+      <h2><span class="grad">Notes to myself</span></h2>
+      <p class="lead">
+        I like to do creative writing. Nothing structured, no agenda. Just a free flow of thoughts.
+      </p>
+
+      <div class="writing-grid">
+        <div class="writing">
+          <h3>While Everything Moves</h3>
+          <pre>Everything passes.
+Look up at the sky and notice how the clouds keep moving…
+After just a few seconds of watching them, they are no longer in the same place.
+
+And inside, what is there?
+Amid so many uncertainties, emptiness, and loneliness, everything is still in motion.
+We may not yet know why, but movement is necessary.
+Life is movement.
+
+No matter how misaligned things may seem, they are, in truth, connected on an invisible plane.
+Even if we don’t understand how, this movement was planned and is part of a greater journey;
+a journey we are walking at every moment.
+
+We don’t know where we are going, yet we continue forward, carried by movement itself.
+What shapes our experience along the way are the choices we make.
+
+The secret of life, then, lies in choosing what is right,
+what makes sense, while we are in motion.</pre>
+        </div>
+
+        <div class="writing">
+          <h3>Tomorrow</h3>
+          <pre>I am running because I have a place to be 
+A place that is magical and sweet
+Where pain shall not exist
+But colorful balloons, dance, and light
+
+I am rushing to get to this place
+As I need to live in it
+If there is something so beautiful
+How could one live a different life otherwise?
+
+But there is a cost to get to this place
+A price that few are willing to pay
+And that is for not living in the present
+And perhaps in constant pain
+
+The place I long for is called tomorrow.
+I will keep on chasing tomorrow
+Even though I don't know
+if it will exist</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEDITATION -->
+    <section class="block" id="meditation">
+      <p class="kicker">Meditation</p>
+      <h2><span class="grad">Stillness</span></h2>
+      <p class="lead">
+        Meditation entered my life through curiosity, as a way to turn inward and listen more closely to myself rather than the noise of the outside world.
+        My practice is intuitive, centered on the breath and the simple act of observing thoughts as they arise and pass. While short practices were helpful,
+        it was not until an 8-day silent retreat in a remote monastery that I experienced the deeper impact of meditation. Spending about 18 hours a day in
+        silence and stillness allowed me to reconnect with my inner world in a way I had not before. The experience was deeply transformative, helping me
+        connect more with myself, my intuition, and a sense of who I truly am. Since then, meditation has become a steady source of clarity and peace,
+        keeping me grounded, present, and aligned amid the chaos of life.
+      </p>
+
+      <div class="media-frame">
+        <img src="monastery.png" alt="Monastery">
       </div>
     </section>
 
@@ -317,6 +485,20 @@
             Filmaffinity →
           </a>
         </div>
+      </div>
+    </section>
+
+    <!-- FLOKI -->
+    <section class="block" id="floki">
+      <p class="kicker">Floki</p>
+      <h2><span class="grad">My daily reset</span></h2>
+      <p class="lead">
+        Floki is my constant companion and a source of joy in my life. He reminds me to slow down, enjoy the little moments,
+        and approach each day with playfulness. He loves walks, but more importantly, he is a big fan of car rides.
+      </p>
+
+      <div class="media-frame">
+        <img src="floki-1.png" alt="Floki">
       </div>
     </section>
 
