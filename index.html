@@ -11,8 +11,10 @@
       --bg: #070913;
       --text: rgba(255,255,255,.86);
       --muted: rgba(255,255,255,.62);
+
       --g1: #35d0ff;
       --g2: #22e1a8;
+
       --radius: 22px;
       --radius2: 18px;
       --shadow: 0 18px 60px rgba(0,0,0,.28);
@@ -23,7 +25,7 @@
 
     body{
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
       background:
         radial-gradient(1200px 820px at 18% -10%, rgba(53,208,255,.11), transparent 56%),
@@ -32,6 +34,9 @@
         var(--bg);
       overflow-x: hidden;
     }
+
+    a{ color: rgba(255,255,255,.86); text-decoration: none; }
+    a:hover{ color: white; }
 
     .wrap{
       width: min(980px, calc(100% - 44px));
@@ -46,12 +51,11 @@
       color: transparent;
     }
 
-    /* ===== NAME (OPTION 1) ===== */
     .name{
+      margin: 0;
       font-size: clamp(30px, 5vw, 56px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
       line-height: 1.05;
+      letter-spacing: -0.02em;
       white-space: nowrap;
     }
 
@@ -84,7 +88,6 @@
     .intro{ margin-top: 56px; }
     .block{ margin-top: 80px; }
 
-    /* ===== HERO ===== */
     .hero{
       border-radius: var(--radius);
       background:
@@ -104,6 +107,7 @@
 
     @media (max-width: 860px){
       .hero-grid{ grid-template-columns: 1fr; }
+      .name{ white-space: normal; }
     }
 
     .hero-grid > div:first-child{
@@ -112,7 +116,6 @@
       margin-right: auto;
     }
 
-    /* ===== MEDIA ===== */
     .media-frame{
       margin-top: 20px;
       border-radius: var(--radius2);
@@ -128,7 +131,6 @@
       display: block;
     }
 
-    /* ===== PAINTINGS ===== */
     .paint-grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -152,7 +154,6 @@
       padding: 14px;
     }
 
-    /* ===== REFLECTIONS ===== */
     .writing-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -184,12 +185,11 @@
       white-space: pre-wrap;
       font-family: inherit;
       line-height: 1.85;
-      color: var(--muted);
+      color: rgba(255,255,255,.76);
       font-size: 15.5px;
       margin: 0;
     }
 
-    /* ===== READINGS & MOVIES ===== */
     .grid-2{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -214,12 +214,19 @@
       font-size: 18px;
     }
 
-    /* BUTTONS (VISIBLE ON MOBILE) */
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15.75px;
+    }
+
+    /* BUTTONS FOR READINGS & MOVIES */
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      margin-top: 16px;
+      margin-top: 14px;
       padding: 12px 18px;
       border-radius: 999px;
       background: rgba(255,255,255,.06);
@@ -235,7 +242,6 @@
       .btn{ width: 100%; }
     }
 
-    /* ===== FOOTER ===== */
     footer{
       margin-top: 96px;
       display:flex;
@@ -266,169 +272,63 @@
 </head>
 
 <body>
-<div class="wrap">
+  <div class="wrap">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-grid">
-      <div>
-        <h1 class="name grad">Franciele Nunes Da Silva</h1>
-        <p class="intro">
-          I have lived a few very different lives in one. I am drawn to hard work and clean simplicity and also to depth,
-          wonder, and the kind of learning that changes you. I navigate life with curiosity, reflection, and a deep
-          appreciation for moments that reveal meaning. This space captures my journey, passions, and the inspirations
-          that shape my world.
-        </p>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1 class="name"><span class="grad">Franciele Nunes Da Silva</span></h1>
+          <p class="intro">
+            I have lived a few very different lives in one. I am drawn to hard work and clean simplicity and also to depth,
+            wonder, and the kind of learning that changes you. I navigate life with curiosity, reflection, and a deep
+            appreciation for moments that reveal meaning. This space captures my journey, passions, and the inspirations
+            that shape my world.
+          </p>
+        </div>
+        <div class="media-frame"><img src="profile.png"></div>
       </div>
-      <div class="media-frame"><img src="profile.png" alt="Portrait"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHO -->
-  <section class="block">
-    <p class="kicker">Who I am</p>
-    <h2 class="grad">A life built in chapters</h2>
-    <p class="lead">
-      I grew up in Minas Gerais, Brazil, on a farm where life was simple, grounded, and closely connected to nature.
-      Surrounded by fresh food, animals, and open land, I learned early lessons about hard work, community, and responsibility.
-      At thirteen, I left the farm, began working full time, and continued school part time. In 2017, I moved to the United States
-      with no English and little certainty. One principle has remained constant throughout it all: stay curious, ask questions,
-      and give full care to whatever you choose to build.
-    </p>
-  </section>
+    <!-- READINGS & MOVIES -->
+    <section class="block" id="media">
+      <p class="kicker">Readings & movies</p>
+      <h2><span class="grad">What I am into</span></h2>
 
-  <!-- TRAVEL -->
-  <section class="block">
-    <p class="kicker">Travel</p>
-    <h2 class="grad">The outer world</h2>
-    <p class="lead">
-      I travel for perspective and to come back with a calmer mind. The experiences I collect become fuel for both my professional
-      and personal life. I have visited 12 countries and spent extensive time exploring 34 US national parks.
-    </p>
-    <div class="media-frame"><img src="hiking.png"></div>
-  </section>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Readings</h3>
+          <p>
+            I am very selective when it comes to books. Although I have not read a lot of books, the ones I have read are a very good selection.
+            I like to read about psychology, philosophy, science, and biographies. Sometimes a good novel makes its way to my list too.
+          </p>
+          <a class="btn" href="https://www.goodreads.com/user/show/177005295-franciele-nunes-da-silva" target="_blank" rel="noreferrer noopener">
+            Goodreads →
+          </a>
+        </div>
 
-  <!-- PAINTINGS -->
-  <section class="block">
-    <p class="kicker">Paintings</p>
-    <h2 class="grad">Where words stop</h2>
-    <p class="lead">
-      Painting is how I translate feelings and fleeting moments into color and form.
-    </p>
-    <div class="paint-grid">
-      <div class="media-frame"><img src="painting-1.png"></div>
-      <div class="media-frame"><img src="painting-2.png"></div>
-      <div class="media-frame"><img src="crossmint.png"></div>
-    </div>
-  </section>
-
-  <!-- REFLECTIONS -->
-  <section class="block">
-    <p class="kicker">Reflections</p>
-    <h2 class="grad">Notes to myself</h2>
-    <p class="lead">
-      I like to do creative writing. Nothing structured, no agenda, just free flow of thoughts.
-    </p>
-    <div class="writing-grid">
-      <div class="writing">
-        <h3>While Everything Moves</h3>
-        <pre>Everything passes.
-Look up at the sky and notice how the clouds keep moving…
-After just a few seconds of watching them, they are no longer in the same place.
-
-And inside—what is there?
-Amid so many uncertainties, emptiness, and loneliness, everything is still in motion.
-We may not yet know why, but movement is necessary.
-Life is movement.
-
-No matter how misaligned things may seem, they are, in truth, connected on an invisible plane.
-Even if we don’t understand how, this movement was planned and is part of a greater journey;
-a journey we are walking at every moment.
-
-We don’t know where we are going, yet we continue forward, carried by movement itself.
-What shapes our experience along the way are the choices we make.
-
-The secret of life, then, lies in choosing what is right—
-what makes sense—while we are in motion.</pre>
+        <div class="card">
+          <h3>Movies</h3>
+          <p>
+            I started tracking the movies I watch in 2024, even though I have watched far more than what appears on my list.
+            I love going to the movie theater and watching movies hot the press. All genres are welcome except for the really terrifying horror ones.
+          </p>
+          <a class="btn" href="https://www.filmaffinity.com/us/userratings.php?user_id=7077969" target="_blank" rel="noreferrer noopener">
+            Filmaffinity →
+          </a>
+        </div>
       </div>
+    </section>
 
-      <div class="writing">
-        <h3>Tomorrow</h3>
-        <pre>I am running because I have a place to be 
-A place that is magical and sweet
-Where pain shall not exist
-But colorful balloons, dance, and light
-
-I am rushing to get to this place
-As I need to live in it
-If there is something so beautiful
-How could one live a different life otherwise?
-
-But there is a cost to get to this place
-A price that few are willing to pay
-And that is for not living in the present
-And perhaps in constant pain
-
-The place I long for is called tomorrow.
-I will keep on chasing tomorrow
-Even though I don't know
-if it will exist</pre>
+    <footer>
+      <div>© Franciele Nunes Da Silva · franciele.xyz</div>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/franciele-nunesdasilva/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+        <a href="https://x.com/imfloka" target="_blank" rel="noreferrer noopener">X</a>
+        <a href="https://www.instagram.com/iamfrancielenunesdasilva/" target="_blank" rel="noreferrer noopener">Instagram</a>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- MEDITATION -->
-  <section class="block">
-    <p class="kicker">Meditation</p>
-    <h2 class="grad">Stillness</h2>
-    <p class="lead">
-      Meditation entered my life through curiosity and became a steady source of clarity, grounding, and peace.
-    </p>
-    <div class="media-frame"><img src="monastery.png"></div>
-  </section>
-
-  <!-- MEDIA -->
-  <section class="block">
-    <p class="kicker">Readings & movies</p>
-    <h2 class="grad">What I am into</h2>
-    <div class="grid-2">
-      <div class="card">
-        <h3>Readings</h3>
-        <p>
-          I am very selective when it comes to books. I like psychology, philosophy, science, biographies, and the occasional novel.
-        </p>
-        <a class="btn" href="https://www.goodreads.com/user/show/177005295-franciele-nunes-da-silva" target="_blank">Goodreads →</a>
-      </div>
-      <div class="card">
-        <h3>Movies</h3>
-        <p>
-          I love going to the movie theater and watching new releases. All genres are welcome except the really terrifying horror ones.
-        </p>
-        <a class="btn" href="https://www.filmaffinity.com/us/userratings.php?user_id=7077969" target="_blank">Filmaffinity →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FLOKI -->
-  <section class="block">
-    <p class="kicker">Floki</p>
-    <h2 class="grad">My daily reset</h2>
-    <p class="lead">
-      Floki is my constant companion and a source of joy in my life. He reminds me to slow down, enjoy the little moments,
-      and approach each day with playfulness. He loves walks, but more importantly, he is a big fan of car rides.
-    </p>
-    <div class="media-frame"><img src="floki-1.png"></div>
-  </section>
-
-  <footer>
-    <div>© Franciele Nunes Da Silva · franciele.xyz</div>
-    <div class="social">
-      <a href="https://www.linkedin.com/in/franciele-nunesdasilva/">LinkedIn</a>
-      <a href="https://x.com/imfloka">X</a>
-      <a href="https://www.instagram.com/iamfrancielenunesdasilva/">Instagram</a>
-    </div>
-  </footer>
-
-</div>
+  </div>
 </body>
 </html>
